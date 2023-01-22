@@ -1,0 +1,85 @@
+body{
+    direction: rtl;
+    text-align: right;
+}
+.mr-3, .mx-3 {
+    margin-left: 0.75rem !important;
+    margin-right: auto;
+}
+.aside-fixed .aside {
+    right: 0;
+    left: auto;
+}
+.aside-fixed .wrapper {
+    padding-right: 265px;
+    padding-left: initial;
+}
+.aside-fixed.aside-minimize .wrapper {
+    padding-right: 70px;
+    padding-left: initial;
+}
+.aside-enabled .header.header-fixed {
+    right: 265px;
+    left: 0;
+}
+.header-fixed.aside-minimize-hover .header, .header-fixed.aside-minimize .header {
+    right: 70px;
+    left: 0;
+}
+.breadcrumb-item + .breadcrumb-item {
+    padding-right: 0.5rem;
+    padding-left: initial;
+}
+.breadcrumb.breadcrumb-dot .breadcrumb-item:after {
+    margin-right: 0.5rem;
+    margin-left: auto;
+}
+.navi .navi-item .navi-link .navi-text {
+    color: #464E5F;
+    text-align: right;
+}
+.offcanvas {
+    right: -395px;
+    left: auto;
+}
+.offcanvas-on {
+    left: 0 !important;
+    right: auto;
+}
+.menu-arrow {
+    transform: scale(-1,1);
+}
+.aside-menu .menu-nav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-link {
+    padding: 0 25px;
+    padding-right: 40px;
+    padding-left: 25px;
+}
+
+/**/
+
+.aside-enabled.subheader-fixed .subheader {
+    right: 265px;
+    left: 0;
+}
+.aside-enabled.aside-minimize  .subheader {
+    right: 70px !important;
+    left: 0;
+}
+.btn-group > form {
+    margin-left: 15px;
+    margin-right: auto;
+}
+.input-group > .form-control:not(:last-child), .input-group > .custom-select:not(:last-child) {
+    border-radius: 0;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+.input-group-append .btn {
+    border-radius: 0;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+.mr-2, .mx-2 {
+    margin-left: 0.5rem !important;
+    margin-right: 0;
+}

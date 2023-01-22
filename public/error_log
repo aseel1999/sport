@@ -1,0 +1,15 @@
+[25-Feb-2021 09:37:15 UTC] PHP Fatal error:  Cannot redeclare App\Models\Store::getIsFevoriteAttribute() in /home4/hexa/cupcake/CupCake/app/Models/Store.php on line 52
+[07-Mar-2021 08:51:14 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\API\UserController::getOrderDetail() in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/UserController.php on line 609
+[14-Mar-2021 12:25:52 UTC] PHP Fatal error:  Cannot use App\Models\Store as Store because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/WEB/Admin/StoreController.php on line 11
+[14-Mar-2021 12:26:47 UTC] PHP Fatal error:  Cannot use App\Models\Store as Store because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/WEB/Admin/StoreController.php on line 11
+[16-Mar-2021 12:38:46 UTC] PHP Fatal error:  Cannot redeclare App\Models\Chat::getUserAttribute() in /home4/hexa/cupcake/CupCake/app/Models/Chat.php on line 55
+[16-Mar-2021 12:49:18 UTC] PHP Fatal error:  Cannot redeclare App\Models\Chat::getUserAttribute() in /home4/hexa/cupcake/CupCake/app/Models/Chat.php on line 57
+[18-Mar-2021 12:04:52 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\WEB\Admin\AdminController::update() in /home4/hexa/cupcake/CupCake/app/Http/Controllers/WEB/Admin/AdminController.php on line 263
+[31-Mar-2021 08:02:31 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:02:40 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:02:44 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:03:42 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:03:51 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:04:32 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:05:08 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29
+[31-Mar-2021 08:05:16 UTC] PHP Fatal error:  Cannot use App\Models\Token as Token because the name is already in use in /home4/hexa/cupcake/CupCake/app/Http/Controllers/API/CartController.php on line 29

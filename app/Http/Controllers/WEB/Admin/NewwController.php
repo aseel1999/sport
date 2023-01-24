@@ -11,11 +11,13 @@ use Intervention\Image\Facades\Image;
 use App\Models\Setting;
 use App\Models\Neww;
 use App\Models\NewwImage;
+use App\Models\Detail;
 use App\Models\Category;
 use App\Models\NewwCategory;
 
 class NewwController extends Controller
 {
+    use imageTrait;
     public function __construct()
     {
         $this->settings = Setting::query()->first();
@@ -133,7 +135,7 @@ class NewwController extends Controller
         if($request->categories!= null){
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'new_id' => $item->id,
+                    'neww_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
@@ -181,9 +183,9 @@ class NewwController extends Controller
 
         $item = Neww::query()->findOrFail($id);
         
-       $item->category_id=$request->category_id;
+       
        $item->is_post=$request->is_post;
-       $item->image=$request->image;
+       
 
         foreach ($locales as $locale)
         {
@@ -222,13 +224,13 @@ class NewwController extends Controller
         if($request->categories != null){
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'new_id' => $item->id,
+                    'neww_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
             }
-            NewwCategory::where('new_id',$item->id)->delete();
-            NewwCategory::insert($values);
+            NewwCategory::where('neww_id',$item->id)->delete();
+             NewwCategory::insert($values);
 
         }
         
@@ -247,5 +249,15 @@ class NewwController extends Controller
         }
         return "fail";
     }
-    
+    public function details($id){
+        
+        $new = Neww::where('id',$id)->first();
+        $items = Detail::where('neww_id',$id)->orderByDesc('id')->get();
+        return view('admin.news.details')->with(compact('items','new'));
+    }
+    public function createDetail($id){
+        $new = Neww::where('id',$id)->first();
+        $items = Detail::where('neww_id',$new)->get();
+        return view('admin.news.create_details')->with(compact('new','items'));
+    }
 }

@@ -13,6 +13,6 @@ class NewwCategory extends Model
         return $this->belongsTo(Neww::class,'neww_id');
     }
     public function category(){
-        return $this->belongsTo(Cateory::class,'category_id');
+        return $this->belongsTo(Category::class,'category_id');
     }
 }

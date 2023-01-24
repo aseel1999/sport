@@ -15,13 +15,13 @@
                 <!--begin::Info-->
                 <div class="d-flex align-items-center flex-wrap mr-1">
                     <div class="d-flex align-items-baseline mr-5">
-                        <h3>{{$item->subtitle}} / {{ucwords(__('cp.details'))}}</h3>
+                        <h3> {{ucwords(__('cp.details'))}}</h3>
                     </div>
                 </div>
 
 
                 <div>
-                    <a href="{{url(getLocal().'/admin/articles')}}" class="btn btn-secondary">
+                    <a href="{{url(getLocal().'/admin/news')}}" class="btn btn-secondary">
                         <i class="icon-xl la la-minus"></i>
                         <span>{{__('cp.cancel')}}</span>
                     </a>
@@ -52,9 +52,8 @@
                                         </div>
                                     </th>
                                     <th class="wd-5p">ID</th>
-                                    <th class="wd-25p"> {{ucwords(__('cp.article'))}}</th>
+                                    <th class="wd-25p"> {{ucwords(__('cp.title'))}}</th>
                                     <th class="wd-5p"> {{ucwords(__('cp.subtitle'))}}</th>
-                                    <th class="wd-5p"> {{ucwords(__('cp.status'))}}</th>
                                     <th class="wd-10p"> {{ucwords(__('cp.created'))}}</th>
                                 </tr>
                                 </thead>
@@ -72,13 +71,8 @@
                                             @endif
                                         </td>
                                         <td class="v-align-middle wd-5p">{{$one->id}}</td>
-                                        <td class="v-align-middle wd-25p">{{@$one->article? @$one->article->title : __('cp.un_assigned')}}</td>
+                                        <td class="v-align-middle wd-25p">{{@$one->new? @$one->new->title : __('cp.un_assigned')}}</td>
                                         <td class="v-align-middle wd-25p">{{$one->subtitle}}</td>
-                                        <td class="v-align-middle wd-10p" > <span id="label-{{$one->id}}" class="badge badge-pill badge-{{($one->status == "active")
-                                            ? "info" : "danger"}}" id="label-{{$one->id}}">
-                                            {{__('cp.'.$one->status)}}
-                                        </span>
-                                        </td>
                                         <td class="v-align-middle wd-10p">{{$one->created_at->format('Y-m-d')}}</td>
                                     </tr>
                                 @empty
@@ -88,7 +82,7 @@
 
                                 </tbody>
                             </table>
-                            {{$items->appends($_GET)->links("pagination::bootstrap-4") }}
+                            
                         </div>
                     </div>
                 </div>

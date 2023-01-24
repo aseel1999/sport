@@ -147,6 +147,7 @@ return [
     'editInformation'=>'تعديل البيانات الشخصية',
     'overview'=>'نظرة عامة',
     'supplier_code'=>'رمز المورد',
+    'locals'=>'محليات',
     'branch_name'=>'اسم الفرع',
     'cuisines'=>'المطابخ',
     'accept_pick_up'=>'يقبل الطلبات',

@@ -81,8 +81,7 @@ class CategoryController extends Controller
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
             $roles['name_' . $locale] = 'required';
-            $roles['title_' . $locale] = 'required';
-            $roles['definition_' . $locale] = 'required';
+            
         }
         $this->validate($request, $roles);
 
@@ -93,8 +92,7 @@ class CategoryController extends Controller
         foreach ($locales as $locale)
         {
             $item->translateOrNew($locale)->name = $request->get('name_' . $locale);
-            $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
-            $item->translateOrNew($locale)->definition = $request->get('definition_' . $locale);
+            
         } 
         
         $item->save();
@@ -122,8 +120,7 @@ class CategoryController extends Controller
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
             $roles['name_' . $locale] = 'required';
-            $roles['title_' . $locale] = 'required';
-            $roles['definition_' . $locale] = 'required';
+          
         }
         $this->validate($request, $roles);
 
@@ -134,8 +131,7 @@ class CategoryController extends Controller
         foreach ($locales as $locale)
         {
             $item->translateOrNew($locale)->name = $request->get('name_' . $locale);
-            $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
-        $item->translateOrNew($locale)->definition = $request->get('definition_' . $locale);
+            
         
         }
         activity($item->name)->causedBy(auth('admin')->user())->log(' تعديل التصنيف ');

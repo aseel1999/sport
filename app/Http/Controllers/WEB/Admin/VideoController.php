@@ -76,11 +76,11 @@ class VideoController extends Controller
             foreach ($locales as $locale)
         {
             $item->translateOrNew($locale)->name_video = $request->get('name_video_' . $locale);
-            $item->translateOrNew($locale)->url = $request->get('url _' . $locale);
+            $item->translateOrNew($locale)->url = $request->get('url_' . $locale);
             
         } 
             $item->save();
-            activity()->causedBy(auth('admin')->user())->log(' إضافة فيديو جديد');
+           // activity()->causedBy(auth('admin')->user())->log(' إضافة فيديو جديد');
             return redirect()->back()->with('status', __('cp.create'));
         }
         

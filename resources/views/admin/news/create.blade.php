@@ -107,9 +107,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{__('cp.detail_'.$locale->lang)}}</label>
-                                                <input type="text" class="form-control form-control-solid"
+                                                <textarea class="form-control form-control-solid"
                                                        {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="detail_{{$locale->lang}}"
-                                                       value="{{old('detail_'.$locale->lang)}}" required/>
+                                                       value="{{old('detail_'.$locale->lang)}}" required></textarea>
                                             
                                         </div>
                                     </div>

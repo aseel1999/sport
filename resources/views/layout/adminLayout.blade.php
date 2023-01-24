@@ -319,6 +319,78 @@
                                         </a>
                                     </li>
                                 @endif
+								@if(can(['roles-show' , 'roles-create' , 'roles-edit' , 'roles-delete']))
+                                    <li class="menu-item {{(explode("/", request()->url())[5] == "roles") ? "menu-item-here" : ''}}"
+                                        aria-haspopup="true">
+                                        <a href="{{url(getLocal().'/admin/roles')}}" class="menu-link">
+												<span class="svg-icon menu-icon">
+																<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Bookmark.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24"/>
+                                                            <path d="M8,4 L16,4 C17.1045695,4 18,4.8954305 18,6 L18,17.726765 C18,18.2790497 17.5522847,18.726765 17,18.726765 C16.7498083,18.726765 16.5087052,18.6329798 16.3242754,18.4639191 L12.6757246,15.1194142 C12.2934034,14.7689531 11.7065966,14.7689531 11.3242754,15.1194142 L7.67572463,18.4639191 C7.26860564,18.8371115 6.63603827,18.8096086 6.26284586,18.4024896 C6.09378519,18.2180598 6,17.9769566 6,17.726765 L6,6 C6,4.8954305 6.8954305,4 8,4 Z" fill="#000000"/>
+                                                        </g>
+                                                    </svg>
+												</span>
+                                            <span class="menu-text">{{__('cp.roles')}}</span>
+                                        </a>
+                                    </li>
+                                @endif
+								@if(can(['settings-show'  , 'settings-edit']))
+								<li class="menu-item menu-item-submenu" aria-haspopup="true"
+									data-menu-toggle="hover">
+									<a href="javascript:;" class="menu-link menu-toggle">
+									<span class="svg-icon menu-icon">
+										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+													 height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<path
+												d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
+												fill="#000000"/>
+										</g>
+									</svg>
+										<!--end::Svg Icon-->
+									</span>
+										<span class="menu-text">{{__('cp.setting')}}</span>
+										<i class="menu-arrow"></i>
+									</a>
+									<div class="menu-submenu">
+
+										<ul class="menu-subnav">
+
+											<li class="menu-item" aria-haspopup="true">
+												<a href="{{url(getLocal().'/admin/settings')}}" class="menu-link">
+													<i class="menu-bullet menu-bullet-dot">
+														<span></span>
+													</i>
+													<span class="menu-text">{{__('cp.general_setting')}}</span>
+												</a>
+											</li>
+											<li class="menu-item" aria-haspopup="true">
+												<a href="{{url(getLocal().'/admin/system_maintenance')}}"
+												   class="menu-link">
+													<i class="menu-bullet menu-bullet-dot">
+														<span></span>
+													</i>
+													<span class="menu-text">{{__('cp.system_maintenance')}} </span>
+												</a>
+											</li>
+{{--                                                <li class="menu-item" aria-haspopup="true">--}}
+{{--                                                    <a href="{{url(getLocal().'/admin/system_seo')}}" class="menu-link">--}}
+{{--                                                        <i class="menu-bullet menu-bullet-dot">--}}
+{{--                                                            <span></span>--}}
+{{--                                                        </i>--}}
+{{--                                                        <span class="menu-text">{{__('cp.seo_setting')}} </span>--}}
+{{--                                                    </a>--}}
+{{--                                                </li>--}}
+										</ul>
+									</div>
+								</li>
+
+
+							@endif
+
 
 
                                 

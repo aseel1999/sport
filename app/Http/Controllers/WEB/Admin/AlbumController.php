@@ -62,6 +62,7 @@ class AlbumController extends Controller
     }
     public function store(Request $request)
     {
+       
         {
             $roles = [
             ];
@@ -70,16 +71,16 @@ class AlbumController extends Controller
             $roles['name_album_' . $locale] = 'required';
             
         }
-            $this->validate($request, $roles);
-    
+           $this->validate($request, $roles);
+           
             $item= new Album();
             foreach ($locales as $locale)
         {
-            $item->translateOrNew($locale)->name_album = $request->get('name_album' . $locale);
+            $item->translateOrNew($locale)->name_album = $request->get('name_album_' . $locale);
            
         } 
             $item->save();
-            activity()->causedBy(auth('admin')->user())->log(' إضافة ألبوم جديد');
+            activity($item->name_album)->causedBy(auth('admin')->user())->log(' إضافة ألبوم جديد');
             return redirect()->back()->with('status', __('cp.create'));
         }
         
@@ -97,7 +98,7 @@ class AlbumController extends Controller
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
-            $roles['name_album' . $locale] = 'required';
+            $roles['name_album_' . $locale] = 'required';
         }
         $this->validate($request, $roles);
 
@@ -107,9 +108,10 @@ class AlbumController extends Controller
             $item->translateOrNew($locale)->name_album = $request->get('name_album_' . $locale);
             
         }
+        $item->save();
         activity($item->name_album)->causedBy(auth('admin')->user())->log(' تعديل الألبوم');
 
-        $item->save();
+       
         return redirect()->back()->with('status', __('cp.update'));
     }
     public function destroy($id)

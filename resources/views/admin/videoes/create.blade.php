@@ -68,7 +68,7 @@
                                         <label>{{__('cp.url_'.$locale->lang)}}</label>
                                         <input type="text" class="form-control form-control-solid"
                                                {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="url_{{$locale->lang}}"
-                                               value="{{old('url_'.$locale->lang)}}" />
+                                               value="{{old('url_'.$locale->lang)}}" required/>
                                     </div>
                                 </div>
                             @endforeach

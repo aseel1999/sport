@@ -20,6 +20,7 @@ class CreateAlbumTranslationsTable extends Migration
             $table->string('locale');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+            
         });
     }
 

@@ -12,6 +12,9 @@ class Neww extends Model
     protected $translatedAttributes=['title','detail'];
     protected $hidden = ['translations' ,'updated_at'];
     protected $table='news';
+    public function detail(){
+        return $this->hasOne(Neww::class);
+    }
     public function categories()
     {
         return $this->belongsTo(NewwCategory::class);

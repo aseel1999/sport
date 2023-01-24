@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class AlbumTranslation extends Model
 {
     use HasFactory;
+    protected $table='album_translations';
 }

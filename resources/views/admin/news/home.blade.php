@@ -96,6 +96,12 @@
                                                 <i class="la la-edit"></i>
                                             </a>
                                         </td>
+                                        <td class="v-align-middle wd-15p optionAddHours">
+                                            <a href="{{url(getLocal().'/admin/news/'.$one->id.'/details')}}"
+                                               class="btn btn-sm btn-clean btn-icon"id="details" title="{{__('cp.details')}}">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @empty
 
@@ -117,7 +123,9 @@
 
 @endsection
 @section('js')
+<script>
 
+  </script>
 @endsection
 
 @section('script')

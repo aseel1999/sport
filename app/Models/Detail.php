@@ -9,9 +9,9 @@ class Detail extends Model
 {
     use HasFactory,Translatable;
     protected $translatedAttributes=['subtitle'];
-    public function article()
+    public function new()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Neww::class);
     }
 
     public function scopeFilter($query)
@@ -20,9 +20,9 @@ class Detail extends Model
             if (request()->get('subtitle') != null)
                 $query->where('subtitle', 'like', '%' . request()->get('subtitle') . '%');
         }
-        if (request()->has('article_id')) {
-            if (request()->get('article_id') != null)
-                $query->whereTranslationLike('article_id','%' . request()->get('article_id') . '%');
+        if (request()->has('new_id')) {
+            if (request()->get('new_id') != null)
+                $query->whereTranslationLike('new_id','%' . request()->get('new_id') . '%');
         }
         if (request()->has('id')) {
             if (request()->get('id') != null)

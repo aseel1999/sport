@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22 يناير 2023 الساعة 09:15
+-- Generation Time: 24 يناير 2023 الساعة 08:36
 -- إصدار الخادم: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,39 @@ SET time_zone = "+00:00";
 --
 -- Database: `sport`
 --
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `activity_log`
+--
+
+CREATE TABLE `activity_log` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `log_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `causer_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `causer_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`)),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `activity_log`
+--
+
+INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `subject_id`, `causer_type`, `causer_id`, `properties`, `created_at`, `updated_at`) VALUES
+(1, 'default', ' إضافة ألبوم جديد', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-23 20:53:54', '2023-01-23 20:53:54'),
+(2, 'interests', ' تعديل الألبوم', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-23 20:57:29', '2023-01-23 20:57:29'),
+(3, 'images', ' تعديل الألبوم', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-23 20:58:07', '2023-01-23 20:58:07'),
+(4, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-23 21:00:14', '2023-01-23 21:00:14'),
+(5, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-23 21:00:15', '2023-01-23 21:00:15'),
+(6, 'هىفثقثسف', ' تعديل الألبوم', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-24 05:22:10', '2023-01-24 05:22:10'),
+(7, '8', ' إضافة تصنيف جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-24 05:24:46', '2023-01-24 05:24:46'),
+(8, 'جد', ' تعديل التصنيف ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-01-24 05:25:01', '2023-01-24 05:25:01');
 
 -- --------------------------------------------------------
 
@@ -81,7 +114,19 @@ CREATE TABLE `albums` (
 --
 
 INSERT INTO `albums` (`id`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-13 22:31:46', '2023-01-20 22:31:46');
+(1, '2023-01-13 22:31:46', '2023-01-20 22:31:46'),
+(2, '2023-01-23 15:31:35', '2023-01-23 15:31:35'),
+(3, '2023-01-23 15:41:07', '2023-01-23 15:41:07'),
+(4, '2023-01-23 15:41:20', '2023-01-23 15:41:20'),
+(5, '2023-01-23 15:46:57', '2023-01-23 15:46:57'),
+(6, '2023-01-23 15:49:17', '2023-01-23 15:49:17'),
+(7, '2023-01-23 15:49:30', '2023-01-23 15:49:30'),
+(8, '2023-01-23 15:58:49', '2023-01-23 15:58:49'),
+(9, '2023-01-23 18:45:13', '2023-01-23 18:45:13'),
+(10, '2023-01-23 18:50:36', '2023-01-23 18:50:36'),
+(11, '2023-01-23 18:52:46', '2023-01-23 18:52:46'),
+(12, '2023-01-23 19:04:19', '2023-01-23 19:04:19'),
+(14, '2023-01-23 20:53:54', '2023-01-23 20:53:54');
 
 -- --------------------------------------------------------
 
@@ -103,8 +148,12 @@ CREATE TABLE `album_translations` (
 --
 
 INSERT INTO `album_translations` (`id`, `album_id`, `name_album`, `locale`, `created_at`, `updated_at`) VALUES
-(1, 1, 'infograghics', 'en', '2023-01-20 22:28:58', '2023-01-20 22:30:30'),
-(2, 1, 'انفوجرافيك', 'ar', '2023-01-13 22:29:49', '2023-01-20 22:29:49');
+(1, 14, 'اهتمام', 'en', '2023-01-23 20:53:54', '2023-01-23 20:57:29'),
+(2, 14, 'interests', 'ar', '2023-01-23 20:53:54', '2023-01-23 20:53:54'),
+(3, 13, 'الصور', 'en', '2023-01-23 20:58:07', '2023-01-23 20:58:07'),
+(4, 13, 'images', 'ar', '2023-01-23 20:58:07', '2023-01-23 20:58:07'),
+(5, 12, 'اهتمام', 'en', '2023-01-24 05:22:10', '2023-01-24 05:22:10'),
+(6, 12, 'هىفثقثسف', 'ar', '2023-01-24 05:22:10', '2023-01-24 05:22:10');
 
 -- --------------------------------------------------------
 
@@ -130,7 +179,8 @@ INSERT INTO `categories` (`id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (4, '2023-01-21 19:41:45', '2023-01-21 19:41:45', NULL),
 (5, '2023-01-21 19:43:55', '2023-01-21 19:43:55', NULL),
 (6, '2023-01-21 20:04:06', '2023-01-21 20:04:06', NULL),
-(7, '2023-01-21 20:06:15', '2023-01-21 20:06:15', NULL);
+(7, '2023-01-21 20:06:15', '2023-01-21 20:06:15', NULL),
+(8, '2023-01-24 05:24:46', '2023-01-24 05:25:12', '2023-01-24 05:25:12');
 
 -- --------------------------------------------------------
 
@@ -166,7 +216,9 @@ INSERT INTO `category_translations` (`id`, `category_id`, `locale`, `name`, `cre
 (11, 6, 'en', 'strong plays', '2023-01-21 20:04:21', '2023-01-21 20:04:21', NULL),
 (12, 6, 'ar', 'ألعاب قوى', '2023-01-21 20:05:11', '2023-01-21 20:05:11', NULL),
 (13, 7, 'en', 'hand ball', '2023-01-21 20:06:30', '2023-01-21 20:06:30', NULL),
-(14, 7, 'ar', 'كرة يد', '2023-01-21 20:10:00', '2023-01-21 20:10:00', NULL);
+(14, 7, 'ar', 'كرة يد', '2023-01-21 20:10:00', '2023-01-21 20:10:00', NULL),
+(15, 8, 'en', 'new', '2023-01-24 05:24:46', '2023-01-24 05:24:46', NULL),
+(16, 8, 'ar', 'جد', '2023-01-24 05:24:46', '2023-01-24 05:25:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -190,6 +242,33 @@ CREATE TABLE `contacts` (
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `details`
+--
+
+CREATE TABLE `details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `neww_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `detail_translations`
+--
+
+CREATE TABLE `detail_translations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `detail_id` int(11) NOT NULL,
+  `sub_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `failed_jobs`
 --
 
@@ -202,6 +281,29 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `infographics`
+--
+
+CREATE TABLE `infographics` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `infographics`
+--
+
+INSERT INTO `infographics` (`id`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'n.png\r\n', '2023-01-23 18:47:29', '2023-01-23 18:47:29'),
+(2, 'n.png', '2023-01-23 18:47:29', '2023-01-23 18:47:29'),
+(3, 'n.png', '2023-01-23 18:48:53', '2023-01-23 18:48:53'),
+(4, 'n.png', '2023-01-23 18:48:53', '2023-01-23 18:48:53');
 
 -- --------------------------------------------------------
 
@@ -303,7 +405,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2023_01_20_232359_create_video_translations_table', 2),
 (33, '2023_01_21_183958_create_new_translations_table', 3),
 (34, '2023_01_21_184253_create_video_translations_table', 4),
-(35, '2023_01_21_213716_create_new_categories_table', 5);
+(35, '2023_01_21_213716_create_new_categories_table', 5),
+(36, '2023_01_22_113556_create_infographics_table', 6),
+(37, '2023_01_22_113700_create_details_table', 6),
+(38, '2023_01_22_115131_create_detail_translations_table', 6),
+(39, '2023_01_22_122651_create_details_table', 7),
+(40, '2023_01_23_210115_create_album_translations_table', 8),
+(41, '2022_08_23_104309_create_activity_log_table', 9),
+(42, '2023_01_23_224213_create_album_translations_table', 9);
 
 -- --------------------------------------------------------
 
@@ -324,7 +433,13 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `image`, `is_post`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'yes', '2023-01-20 22:36:01', '2023-01-20 22:36:01');
+(1, 'big-n.png\r\n', 'yes', '2023-01-20 22:36:01', '2023-01-23 20:34:34'),
+(2, '2U1QcRJYIpJNIcu93362551674509601_8017704.png', 'no', '2023-01-23 19:33:21', '2023-01-23 19:33:21'),
+(3, '9w6hnU9YsiRm8Do55308701674509859_5121908.png', 'no', '2023-01-23 19:37:39', '2023-01-23 19:37:39'),
+(4, 'CvHlbJIJMwcnHYg84835471674509937_4600666.png', 'no', '2023-01-23 19:38:57', '2023-01-23 19:38:57'),
+(5, 'paPuB8Vwl7LAxH998533081674510140_1992832.png', 'no', '2023-01-23 19:42:20', '2023-01-23 19:42:20'),
+(7, '3yL9O0jyeYrlMAb62583541674514814_6716695.png', 'no', '2023-01-23 21:00:14', '2023-01-23 21:00:14'),
+(8, 'apsObcOz8ZX9J4w37417801674514815_8037478.png', 'no', '2023-01-23 21:00:15', '2023-01-23 21:00:15');
 
 -- --------------------------------------------------------
 
@@ -345,7 +460,13 @@ CREATE TABLE `neww_images` (
 --
 
 INSERT INTO `neww_images` (`id`, `neww_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'd.png', '2023-01-20 22:45:13', '2023-01-20 22:45:13');
+(1, 1, 'big-n.png', '2023-01-20 22:45:13', '2023-01-23 20:33:55'),
+(2, 2, 'zn5sYdoL16745096013455645.jpg', '2023-01-23 19:33:22', '2023-01-23 19:33:22'),
+(3, 3, '4u7GunuL16745098597782407.jpg', '2023-01-23 19:37:39', '2023-01-23 19:37:39'),
+(4, 4, 'rrElUHr316745099374510789.jpg', '2023-01-23 19:38:57', '2023-01-23 19:38:57'),
+(5, 5, 'tsTW8vGX16745101405336737.jpg', '2023-01-23 19:42:20', '2023-01-23 19:42:20'),
+(6, 7, 'kbkCFaQe16745148149615545.jpg', '2023-01-23 21:00:14', '2023-01-23 21:00:14'),
+(7, 8, 'UlP58x3B16745148156463255.jpg', '2023-01-23 21:00:15', '2023-01-23 21:00:15');
 
 -- --------------------------------------------------------
 
@@ -367,7 +488,12 @@ CREATE TABLE `new_categories` (
 
 INSERT INTO `new_categories` (`id`, `neww_id`, `category_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2023-01-21 21:51:56', '2023-01-21 21:51:56'),
-(2, 1, 2, '2023-01-21 21:57:27', '2023-01-21 21:57:27');
+(2, 1, 2, '2023-01-21 21:57:27', '2023-01-21 21:57:27'),
+(3, 6, 2, NULL, NULL),
+(4, 7, 2, NULL, NULL),
+(5, 7, 4, NULL, NULL),
+(6, 8, 2, NULL, NULL),
+(7, 8, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -391,7 +517,21 @@ CREATE TABLE `new_translations` (
 
 INSERT INTO `new_translations` (`id`, `neww_id`, `title`, `detail`, `locale`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Realmadried won against barsa', 'this was  the best win', 'en', '2023-01-21 18:43:46', '2023-01-21 18:43:46'),
-(2, 1, 'فوز ريال مدريد على برشلونة', 'لقد كان فوز مستحق للريال', 'ar', '2023-01-21 18:45:52', '2023-01-21 18:45:52');
+(2, 1, 'فوز ريال مدريد على برشلونة', 'لقد كان فوز مستحق للريال', 'ar', '2023-01-21 18:45:52', '2023-01-21 18:45:52'),
+(3, 2, 'ffffdddd', 'bbbbbb', 'en', '2023-01-23 19:33:21', '2023-01-23 19:33:21'),
+(4, 2, 'هذه المقالة', 'وةةةةعليققيف', 'ar', '2023-01-23 19:33:21', '2023-01-23 19:33:21'),
+(5, 3, 'fffffffffffffff', 'mmmm', 'en', '2023-01-23 19:37:39', '2023-01-23 19:37:39'),
+(6, 3, 'هذه المقالة', 'لالالالا', 'ar', '2023-01-23 19:37:39', '2023-01-23 19:37:39'),
+(7, 4, 'fffffffffffffff', 'mmmm', 'en', '2023-01-23 19:38:57', '2023-01-23 19:38:57'),
+(8, 4, 'هذه المقالة', 'لالالالا', 'ar', '2023-01-23 19:38:57', '2023-01-23 19:38:57'),
+(9, 5, 'fffffffffffffff', 'mmmm', 'en', '2023-01-23 19:42:20', '2023-01-23 19:42:20'),
+(10, 5, 'هذه المقالة', 'لالالالا', 'ar', '2023-01-23 19:42:20', '2023-01-23 19:42:20'),
+(11, 6, 'fffffffffffffff', 'mmmm', 'en', '2023-01-23 19:44:41', '2023-01-23 19:44:41'),
+(12, 6, 'هذه المقالة', 'لالالالا', 'ar', '2023-01-23 19:44:41', '2023-01-23 19:44:41'),
+(13, 7, 'mmjmjm', 'hhhhhh', 'en', '2023-01-23 21:00:14', '2023-01-23 21:00:14'),
+(14, 7, 'ببببب', 'ىىىىى', 'ar', '2023-01-23 21:00:14', '2023-01-23 21:00:14'),
+(15, 8, 'mmjmjm', 'hhhhhh', 'en', '2023-01-23 21:00:15', '2023-01-23 21:00:15'),
+(16, 8, 'ببببب', 'ىىىىى', 'ar', '2023-01-23 21:00:15', '2023-01-23 21:00:15');
 
 -- --------------------------------------------------------
 
@@ -648,6 +788,13 @@ CREATE TABLE `roles` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- إرجاع أو استيراد بيانات الجدول `roles`
+--
+
+INSERT INTO `roles` (`id`, `slug`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '', '2023-01-24 05:20:16', '2023-01-24 05:20:16', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -662,6 +809,16 @@ CREATE TABLE `role_permissions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `role_permissions`
+--
+
+INSERT INTO `role_permissions` (`id`, `role_id`, `permission_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, NULL, NULL, NULL),
+(2, 1, 2, NULL, NULL, NULL),
+(3, 1, 3, NULL, NULL, NULL),
+(4, 1, 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -678,6 +835,14 @@ CREATE TABLE `role_translations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `role_translations`
+--
+
+INSERT INTO `role_translations` (`id`, `role_id`, `locale`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'en', 'hhh', '2023-01-24 05:20:16', '2023-01-24 05:20:16', NULL),
+(2, 1, 'ar', 'تاا', '2023-01-24 05:20:16', '2023-01-24 05:20:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -798,7 +963,13 @@ CREATE TABLE `videos` (
 --
 
 INSERT INTO `videos` (`id`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-20 22:32:54', '2023-01-20 22:32:54');
+(1, '2023-01-20 22:32:54', '2023-01-20 22:32:54'),
+(2, '2023-01-23 15:25:34', '2023-01-23 15:25:34'),
+(3, '2023-01-23 15:26:59', '2023-01-23 15:26:59'),
+(4, '2023-01-23 15:30:33', '2023-01-23 15:30:33'),
+(5, '2023-01-23 19:12:08', '2023-01-23 19:12:08'),
+(6, '2023-01-23 19:19:45', '2023-01-23 19:19:45'),
+(7, '2023-01-23 19:20:27', '2023-01-23 19:20:27');
 
 -- --------------------------------------------------------
 
@@ -817,8 +988,33 @@ CREATE TABLE `video_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- إرجاع أو استيراد بيانات الجدول `video_translations`
+--
+
+INSERT INTO `video_translations` (`id`, `video_id`, `name_video`, `url`, `locale`, `created_at`, `updated_at`) VALUES
+(1, 1, 'ronaldo goals', 'https://youtu.be/KKZN2vaxxxE', 'en', '2023-01-23 19:10:37', '2023-01-23 19:10:37'),
+(2, 1, 'أهداف رونالدو', 'https://youtu.be/KKZN2vaxxxE', 'ar', '2023-01-23 19:10:37', '2023-01-23 19:17:10'),
+(3, 2, 'matches ', 'https://youtu.be/KKZN2vaxxxE', 'en', '2023-01-23 19:12:55', '2023-01-23 19:44:36'),
+(4, 2, 'مباريات', 'https://youtu.be/KKZN2vaxxxE', 'ar', '2023-01-23 19:12:55', '2023-01-23 19:44:49'),
+(5, 3, 'goals', 'https://youtu.be/KKZN2vaxxxE', 'en', '2023-01-23 19:14:44', '2023-01-23 19:43:48'),
+(6, 3, 'اهداف الدون', 'https://youtu.be/KKZN2vaxxxE', 'ar', '2023-01-23 19:15:27', '2023-01-23 19:16:24'),
+(7, 6, 'vvvvv', 'https://youtu.be/KKZN2vaxxxE', 'en', '2023-01-23 19:19:45', '2023-01-23 19:19:45'),
+(8, 6, 'أهداف', 'https://youtu.be/KKZN2vaxxxE', 'ar', '2023-01-23 19:19:45', '2023-01-23 19:19:45'),
+(9, 7, 'vvvvv', 'https://youtu.be/KKZN2vaxxxE', 'en', '2023-01-23 19:20:27', '2023-01-23 19:20:27'),
+(10, 7, 'هدف', 'https://youtu.be/KKZN2vaxxxE', 'ar', '2023-01-23 19:20:27', '2023-01-24 05:21:46');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activity_log`
+--
+ALTER TABLE `activity_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `subject` (`subject_type`,`subject_id`),
+  ADD KEY `causer` (`causer_type`,`causer_id`),
+  ADD KEY `activity_log_log_name_index` (`log_name`);
 
 --
 -- Indexes for table `admins`
@@ -864,11 +1060,29 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `details`
+--
+ALTER TABLE `details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_translations`
+--
+ALTER TABLE `detail_translations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `infographics`
+--
+ALTER TABLE `infographics`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `languages`
@@ -1020,6 +1234,12 @@ ALTER TABLE `video_translations`
 --
 
 --
+-- AUTO_INCREMENT for table `activity_log`
+--
+ALTER TABLE `activity_log`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
@@ -1035,25 +1255,25 @@ ALTER TABLE `admin_roles`
 -- AUTO_INCREMENT for table `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `album_translations`
 --
 ALTER TABLE `album_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category_translations`
 --
 ALTER TABLE `category_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -1062,10 +1282,28 @@ ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `details`
+--
+ALTER TABLE `details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `detail_translations`
+--
+ALTER TABLE `detail_translations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `infographics`
+--
+ALTER TABLE `infographics`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -1083,31 +1321,31 @@ ALTER TABLE `language_translation`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `neww_images`
 --
 ALTER TABLE `neww_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `new_categories`
 --
 ALTER TABLE `new_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `new_translations`
 --
 ALTER TABLE `new_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1149,19 +1387,19 @@ ALTER TABLE `promo_code_users`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `role_translations`
 --
 ALTER TABLE `role_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -1197,13 +1435,13 @@ ALTER TABLE `varification_codes`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `video_translations`
 --
 ALTER TABLE `video_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

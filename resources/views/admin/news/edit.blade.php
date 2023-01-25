@@ -54,11 +54,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label> {{__('cp.categories')}}</label>
-                                            <select class="form-control form-control-solid select2" id="categories" name="categories[]"
-                                                multiple="multiple" required>
-
-                                                @foreach($categories as $categoryItem)
-                                                    <option value="{{$categoryItem->id}}" {{in_array($categoryItem->id,old('categories',$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$categoryItem->name}}</option>
+                                            <select class="form-control form-control-solid select2" name="categories[]"
+                                                multiple required>
+                                                @foreach($categories as $one)
+                                                    <option value="{{$one->id}}" {{in_array($one->id,old('categories',@$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$one->name}}</option>
                                                 @endforeach
                                             </select>
                                               @if ($errors->has('categories'))

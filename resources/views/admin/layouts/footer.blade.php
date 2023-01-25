@@ -23,8 +23,8 @@
                     <div class="menu-ft">
                         <h5> @lang('website.contact_us')</h5>
                         <ul class="list-contact wow fadeInUp">
-                            <li><a href="tel:+965 99887766"> {{ $setting->mobile }}</a></li>
-                            <li><a href="mailto:info@almaseelah.com"> {{ $setting->info_email }}</a></li>
+                            <li><a href="tel:+965 99887766"> {{ $settings->mobile }}</a></li>
+                            <li><a href="mailto:info@almaseelah.com"> {{ $settings->info_email }}</a></li>
                         </ul>
                         <ul class="list-social">
                             <li><a href=""><i class="fa-brands fa-tiktok"></i></a></li>

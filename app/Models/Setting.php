@@ -36,6 +36,10 @@ class Setting extends Model
         return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
     }
 
+public function getLogoImageAttribute($logo)
+    {
+        return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
+    }
 
 
 }

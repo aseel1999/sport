@@ -22,22 +22,26 @@
         <div class="container">
             <div class="logo-site">
                 <a href="index.html">
-                    <img src="{{asset('web/image/logo.svg')}}"alt="" />
+                    <img src="{{asset('uploads/images/settings/'.$settings->app_logo)}}"alt="logo" />
                 </a>
             </div>
             <div class="banner-header">
-                <a href=""><img src="{{asset('web/image/banner-header.png')}}" alt="" /></a>
+                <a href=""><img src="{{asset('uploads/images/settings/'.$settings->banner_header)}}" alt="" /></a>
             </div>
         </div>
     </div>
     <div class="bt-header">
         <div class="container">
             <ul class="main_menu clearfix">
-                <li class="active"><a class="page-scroll" href="index.html">الرئيسية</a></li>
-                @foreach($categories as $category)
+                <li class="active"><a class="page-scroll" href="index.html">@lang('website.basic')</a></li>
+                <li><a class="page-scroll" href="inner-page.html"> @lang('website.local news')</a></li>
+                <li><a class="page-scroll" href="inner-page.html"> @lang('website.global and local') </a></li>
+                <li><a class="page-scroll" href="inner-page.html"> @lang('website.sport others') </a></li>
+                <li><a class="page-scroll" href="inner-page.html">  @lang('website.matches')</a></li>
+                <li><a class="page-scroll" href="inner-page.html"> @lang('website.videoes')</a></li>
+                
+                
 
-                <li><a class="page-scroll" href="inner-page.html"> {{ $category->name }}</a></li>
-                @endforeach
             </ul>
             <form class="form-search">
                 <div class="form-group">
@@ -56,14 +60,6 @@
                     <span class="hamb-middle"></span>
                     <span class="hamb-bottom"></span>
                 </button>
-            </div>
-        </div>
-    </div>
-    <div class="head-news">
-        <div class="container">
-            <div class="ph-news">
-                <span>{{ 'website.aajel' }}</span>
-                <p>   {{ $new->title }}</p>
             </div>
         </div>
     </div>

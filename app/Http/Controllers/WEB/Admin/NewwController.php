@@ -84,6 +84,7 @@ class NewwController extends Controller
 
     public function store(Request $request)
     {
+        return $request->categories;
         $roles = [
             
             
@@ -222,6 +223,7 @@ class NewwController extends Controller
             }
         }
         if($request->categories != null){
+            
             foreach($request->categories as $categoryId){
                 $values[] = [
                     'neww_id' => $item->id,
@@ -249,15 +251,16 @@ class NewwController extends Controller
         }
         return "fail";
     }
+    
+    
     public function details($id){
-        
-        $new = Neww::where('id',$id)->first();
-        $items = Detail::where('neww_id',$id)->orderByDesc('id')->get();
-        return view('admin.news.details')->with(compact('items','new'));
-    }
-    public function createDetail($id){
-        $new = Neww::where('id',$id)->first();
-        $items = Detail::where('neww_id',$new)->get();
-        return view('admin.news.create_details')->with(compact('new','items'));
+       $new=Neww::where('id',$id)->first();
+       
+       $new->update([
+        'views'=>$new->views+1
+
+       ]);
+       
+       return view ('admin.news.details');
     }
 }

@@ -12,6 +12,19 @@ class Neww extends Model
     protected $translatedAttributes=['title','detail'];
     protected $hidden = ['translations' ,'updated_at'];
     protected $table='news';
+    protected $fillable=['views'];
+    public function getImageAttribute($value)
+    {
+        if ($value) {
+            if (filter_var($value, FILTER_VALIDATE_URL) === FALSE) {
+                return url('uploads/images/news/' . $value);
+            } else {
+                return $value;
+            }
+        } else {
+            return url('uploads/images/users/defualtUser.jpg');
+        }
+    }
     public function detail(){
         return $this->hasOne(Neww::class);
     }

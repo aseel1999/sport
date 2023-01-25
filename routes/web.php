@@ -43,7 +43,7 @@ Route::group([
     });
 
     Route::get('/', 'WEB\Site\HomeController@index')->name('home');
-
+    Route::get('/news/{id}/details', 'WEB\Admin\NewwController@details')->name('details');
 
     //ADMIN AUTH ///
     Route::group(['prefix' => 'admin'], function () {

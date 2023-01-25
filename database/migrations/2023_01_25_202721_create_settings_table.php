@@ -13,9 +13,8 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('settings')) {
-            Schema::create('settings', function (Blueprint $table) {
-                $table->id();
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
                 $table->integer('paginateTotal');
                 $table->string('login_image');
                 $table->string('google_play_url')->nullable();
@@ -28,16 +27,19 @@ class CreateSettingsTable extends Migration
                 $table->string('instagram');
                 $table->text('about');
                 $table->text('whatsapp');
+                $table->string('ad');
+                $table->string('banner_header');
+                $table->string('option_user');
+                $table->string('video_one');
+                $table->string('video_two');
+                $table->string('video_three');
                 $table->enum('is_maintenance_mode',[0,1])->comment('0->off 1->on');
                 $table->enum('is_allow_register',[0,1])->comment('0->off 1->on');
                 $table->enum('is_allow_login',[0,1])->comment('0->off 1->on');
                 $table->string('urls');
                 $table->timestamps();
                 $table->softDeletes();
-            });
-
-
-        }
+        });
     }
 
     /**

@@ -57,8 +57,8 @@
                                             <select class="form-control form-control-solid select2" id="categories" name="categories[]"
                                                 multiple="multiple" required>
 
-                                                @foreach($categories as $roleItem)
-                                                    <option value="{{$roleItem->id}}" {{in_array($roleItem->id,old('categories',$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$roleItem->name}}</option>
+                                                @foreach($categories as $one)
+                                                    <option value="{{$one->id}}" {{in_array($one->id,old('categories',$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$one->name}}</option>
         
                                                 @endforeach
                                             </select>

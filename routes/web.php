@@ -43,7 +43,7 @@ Route::group([
     });
 
     Route::get('/', 'WEB\Site\HomeController@index')->name('home');
-    Route::get('/news/{id}/details', 'WEB\Admin\NewwController@details')->name('details');
+    Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details')->name('details');
 
     //ADMIN AUTH ///
     Route::group(['prefix' => 'admin'], function () {
@@ -116,8 +116,8 @@ Route::group([
 
         
 
-        Route::resource('/news', 'WEB\Admin\NewwController');
-        Route::get('/news/{id}/details', 'WEB\Admin\NewwController@details');
+        Route::resource('/news', 'WEB\Admin\ArticleController');
+        Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details');
 
         Route::get('/contacts', 'WEB\Admin\ContactController@index');
         Route::get('/contacts/{id}/show', 'WEB\Admin\ContactController@show');

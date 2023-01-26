@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\WEB\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Neww;
+use App\Models\Article;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Contact;
@@ -11,7 +11,7 @@ use App\Models\Video;
 use App\Models\Infographic;
 use App\Models\LandingPage;
 use App\Models\Language;
-use App\Models\NewwCategory;
+use App\Models\ArticleCategory;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\Setting;
@@ -34,30 +34,30 @@ class HomeController extends Controller
     public function index()
     {
        $categories=Category::get();
-       $newws =Neww::where('views','>=','5')->take(3)->get();
-        $new=Neww::where('is_post','=','yes')->take(1)->first();
-        $new_big=Neww::orderBy('id', 'desc')->take(3)->first();
+       $newws =Article::where('views','>=','5')->take(3)->get();
+        $new=Article::where('is_post','=','yes')->take(1)->first();
+        $new_big=Article::orderBy('id', 'desc')->take(3)->first();
         $infographics=Infographic::orderBy('id', 'desc')->take(3)->get();
-        $last_news=Neww::orderBy('id', 'desc')->take(4)->get();
+        $last_news=Article::orderBy('id', 'desc')->take(4)->get();
         $video =Video::orderBy('id', 'asc')->take(1)->first();
         $videoes=Video::orderBy('id', 'desc')->take(2)->get();
         $category1=Category::where('id','1')->first();
         $category2=Category::where('id','2')->first();
         $category3=Category::where('id','3')->first();
         $category4=Category::where('id','4')->first();
-        $new2=NewwCategory::with('new')->where('category_id',$category2->id)->take(1)->first();
-        $news2=NewwCategory::with('new')->where('category_id',$category2->id)->take(3)->get();
+        $new2=ArticleCategory::with('article')->where('category_id',$category2->id)->take(1)->first();
+        $news2=ArticleCategory::with('article')->where('category_id',$category2->id)->take(3)->get();
 
-        $new1=NewwCategory::with('new')->where('category_id',$category1->id)->take(1)->first();
-        $news=NewwCategory::with('new')->where('category_id',$category1->id)->take(3)->get();
+        $new1=ArticleCategory::with('article')->where('category_id',$category1->id)->take(1)->first();
+        $news=ArticleCategory::with('article')->where('category_id',$category1->id)->take(3)->get();
 
-        $new3=NewwCategory::with('new')->where('category_id',$category3->id)->take(1)->first();
-        $news3=NewwCategory::with('new')->where('category_id',$category3->id)->take(3)->get();
+        $new3=ArticleCategory::with('article')->where('category_id',$category3->id)->take(1)->first();
+        $news3=ArticleCategory::with('article')->where('category_id',$category3->id)->take(3)->get();
 
-        $new4=NewwCategory::with('new')->where('category_id',$category4->id)->take(1)->first();
-        $news4=NewwCategory::with('new')->where('category_id',$category4->id)->take(3)->get();
+        $new4=ArticleCategory::with('article')->where('category_id',$category4->id)->take(1)->first();
+        $news4=ArticleCategory::with('article')->where('category_id',$category4->id)->take(3)->get();
 
-        $new_categories=NewwCategory::get();
+        $new_categories=ArticleCategory::get();
         
         return view('website.home',[
             'categories'=>$categories,

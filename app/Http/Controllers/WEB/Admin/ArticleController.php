@@ -9,13 +9,13 @@ use App\Models\Language;
 use App\Traits\imageTrait;
 use Intervention\Image\Facades\Image;
 use App\Models\Setting;
-use App\Models\Neww;
-use App\Models\NewwImage;
+use App\Models\Article;
+use App\Models\ArticleImage;
 use App\Models\Detail;
 use App\Models\Category;
-use App\Models\NewwCategory;
+use App\Models\ArticleCategory;
 
-class NewwController extends Controller
+class ArticleController extends Controller
 {
     use imageTrait;
     public function __construct()
@@ -63,7 +63,8 @@ class NewwController extends Controller
     public function index(Request $request)
     {
         
-        $items =Neww::filter()->orderBy('id', 'desc')->get();
+        $items =Article::filter()->orderBy('id', 'desc')->get();
+        
         return view('admin.news.home', [
             'items' =>$items,
             
@@ -99,7 +100,7 @@ class NewwController extends Controller
             $roles['detail_' . $locale] = 'required';
         }
         $this->validate($request, $roles);
-        $item= new Neww();
+        $item= new Article();
         
         $item->is_post=$request->is_post;
         $item->image=$request->image;
@@ -127,8 +128,8 @@ class NewwController extends Controller
                         $attachType = 1;
                         Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/meals/$newName");
                     }
-                    $image=new NewwImage();
-                    $image->neww_id = $item->id;
+                    $image=new ArticleImage();
+                    $image->article_id = $item->id;
                     $image->image = $newName;
                     $image->save();
                 }
@@ -138,12 +139,12 @@ class NewwController extends Controller
         if($request->categories!= null){
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'new_id' => $item->id,
+                    'article_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
             }
-            NewwCategory::insert($values);
+            ArticleCategory::insert($values);
 
         }
         activity()->causedBy(auth('admin')->user())->log(' إضافة خبر جديد ');
@@ -154,7 +155,7 @@ class NewwController extends Controller
     public function edit($id)
         {
            
-        $item = Neww::with('categories')->findOrFail($id);
+        $item = Article::with('categories')->findOrFail($id);
         
             $categories=Category::orderBy('id','desc')->get();
             return view('admin.news.edit', [
@@ -184,7 +185,7 @@ class NewwController extends Controller
         }
         $this->validate($request, $roles);
 
-        $item = Neww::query()->findOrFail($id);
+        $item = Article::query()->findOrFail($id);
         
        
        $item->is_post=$request->is_post;
@@ -203,7 +204,7 @@ class NewwController extends Controller
         $imgsIds = $item->images->pluck('id')->toArray();
         $newImgsIds = ($request->has('oldImages'))? $request->oldImages:[];
         $diff = array_diff($imgsIds,$newImgsIds);
-        NewwImage::whereIn('id',$diff)->delete();
+        ArticleImage::whereIn('id',$diff)->delete();
 
         if($request->has('filename')  && !empty($request->filename))
         {
@@ -218,8 +219,8 @@ class NewwController extends Controller
                         $attachType = 1;
                         Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/meals/$newName");
                     }
-                    $image=new NewwImage();
-                    $image->neww_id = $item->id;
+                    $image=new ArticleImage();
+                    $image->article_id = $item->id;
                     $image->image = $newName;
                     $image->save();
                 }
@@ -230,13 +231,13 @@ class NewwController extends Controller
             
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'new_id' => $item->id,
+                    'article_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
             }
-            NewwCategory::where('new_id',$item->id)->delete();
-             NewwCategory::insert($values);
+            ArticleCategory::where('new_id',$item->id)->delete();
+             ArticleCategory::insert($values);
 
         }
         
@@ -247,9 +248,9 @@ class NewwController extends Controller
     public function destroy($id)
     {
         //
-        $ad = Neww::query()->findOrFail($id);
+        $ad = Article::query()->findOrFail($id);
         if ($ad) {
-            Neww::query()->where('id', $id)->delete();
+            Article::query()->where('id', $id)->delete();
 
             return "success";
         }

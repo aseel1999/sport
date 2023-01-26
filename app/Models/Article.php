@@ -1,28 +1,40 @@
 <?php
 
 namespace App\Models;
-use Astrotomic\Translatable\Translatable;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 
 class Article extends Model
 {
     use HasFactory,Translatable;
-    protected $translatedAttributes=['title','description'];
+    protected $translatedAttributes=['title','detail'];
+    protected $hidden = ['translations' ,'updated_at'];
+    protected $table='articles';
+    protected $fillable=['views'];
     public function getImageAttribute($value)
     {
-        return url('uploads/images/articles/' . $value);
+        if ($value) {
+            if (filter_var($value, FILTER_VALIDATE_URL) === FALSE) {
+                return url('uploads/images/news/' . $value);
+            } else {
+                return $value;
+            }
+        } else {
+            return url('uploads/images/users/defualtUser.jpg');
+        }
     }
-    public function user(){
-        return $this->belongsTo(SubAdmin::class,'user_id','id');
+    public function detail(){
+        return $this->hasOne(Article::class);
     }
-    public function detail()
+    public function categories()
     {
-        return $this->hasOne(Detail::class);
+        return $this->hasMany(ArticleCategory::class);
     }
-    public function category()
+    public function images()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(ArticleImage::class, 'article_id');
     }
     public function scopeFilter($query)
     {
@@ -32,10 +44,10 @@ class Article extends Model
                     $q->whereTranslationLike('title', '%' . request()->get('title') . '%');
                 });
         }
-        if (request()->has('description')) {
-            if (request()->get('description') != null)
+        if (request()->has('detail')) {
+            if (request()->get('detail') != null)
                 $query->where(function ($q) {
-                    $q->whereTranslationLike('description', '%' . request()->get('description') . '%');
+                    $q->whereTranslationLike('detail', '%' . request()->get('detail') . '%');
                 });
         }
         if (request()->has('id')) {
@@ -46,5 +58,4 @@ class Article extends Model
         }
 
     }
-
 }

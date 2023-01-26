@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddViewsToNewsTable extends Migration
+class AddViewsToArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddViewsToNewsTable extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('articles', function (Blueprint $table) {
             $table->integer("views");
         });
     }
@@ -25,7 +25,7 @@ class AddViewsToNewsTable extends Migration
      */
     public function down()
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('articles', function (Blueprint $table) {
            $table->dropColumn('views');
         });
     }

@@ -52,9 +52,9 @@
                                 
                                 <div class="col-lg-6">
                                     <div class="big-news">
-                                        <figure><img src="{{ asset($new1->new->image) }}" alt="77" /></figure>
+                                        <figure><img src="{{ asset($new1->article->image) }}" alt="77" /></figure>
                                         <div class="txt-big-news">
-                                            <h4><a href="details.html">  {{ $new1->new->title }}</a></h4>
+                                            <h4><a href="details.html">  {{ $new1->article->title }}</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -62,11 +62,11 @@
                                     <div class="cont-ds-news">
                                         @foreach($news as $one)
                                         <div class="item-ds-news">
-                                            <figure><img src="{{ $one->new->image }}" alt="" /></figure>
+                                            <figure><img src="{{ $one->article->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
-                                                <h6><a href="details.html"> {{ $one->new->title }}</a></h6>
-                                                <span><i class="fa-solid fa-calendar-days"></i> {{ $one->created_at->format('Y-m-d')}}</span>
-                                                <p>{{ @$one->new->detail }}.</p>
+                                                <h6><a href="details.html"> {{ $one->article->title }}</a></h6>
+                                                <span><i class="fa-solid fa-calendar-days"></i> {{ $one->article->created_at->format('Y-m-d')}}</span>
+                                                <p>{{ @$one->article->detail }}.</p>
                                             </div>
                                         </div>
                                         @endforeach
@@ -83,10 +83,10 @@
                             <div class="other-news">
                                 <div class="big--other--news">
                                     <div class="item-ds-news">
-                                        <figure><img src="{{ asset($new2->new->image) }}" alt="" /></figure>
+                                        <figure><img src="{{ asset($new2->article->image) }}" alt="" /></figure>
                                         <div class="txt-ds-news">
-                                            <h6><a href="details.html" >{{ $new2->new->title }}</a></h6>
-                                            <span>{{ $new2->new->created_at->format('Y-m-d') }} </span>
+                                            <h6><a href="details.html" >{{ $new2->article->title }}</a></h6>
+                                            <span>{{ $new2->article->created_at->format('Y-m-d') }} </span>
                                            
                                         </div>
                                     </div>
@@ -95,11 +95,11 @@
                                     <div class="col-lg-6">
                                         @foreach($news2 as $n2)
                                         <div class="item-ds-news">
-                                            <figure><img src="{{ $n2->new->image }}" alt="" /></figure>
+                                            <figure><img src="{{ $n2->article->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
-                                                <h6><a href="details.html"></a>{{ $n2->new->title }}</h6>
-                                                <span><i class="fa-solid fa-calendar-days"></i>{{ $n2->new->created_at->format('Y-m-d') }} </span>
-                                                <p>{{ $n2->new->detail }}</p>
+                                                <h6><a href="details.html"></a>{{ $n2->article->title }}</h6>
+                                                <span><i class="fa-solid fa-calendar-days"></i>{{ $n2->article->created_at->format('Y-m-d') }} </span>
+                                                <p>{{ $n2->article->detail }}</p>
                                             </div>
                                         </div>
                                         @endforeach
@@ -115,9 +115,9 @@
                                     </div>
                                     <div class="cont-two-atr">
                                         <div class="item-cont-art">
-                                            <figure><img src="{{ @$new3->new->image }}" alt="" /></figure>
+                                            <figure><img src="{{ @$new3->article->image }}" alt="" /></figure>
                                             <div class="txt--art">
-                                                <h4><a href="">  {{ @$new3->new->title }}    </a></h4>
+                                                <h4><a href="">  {{ @$new3->article->title }}    </a></h4>
                                                 <span> {{ @$new3->created_at->format('Y-m-d') }}  </span>
                                                <p></p>
                                             </div>
@@ -125,11 +125,11 @@
                                         <div class="cont-ds-news">
                                             @foreach($news3 as $n3)
                                             <div class="item-ds-news">
-                                                <figure><img src="{{ @$n3->new->image }}" alt="" /></figure>
+                                                <figure><img src="{{ @$n3->article->image }}" alt="" /></figure>
                                                 <div class="txt-ds-news">
-                                                    <h6><a href="details.html"></a>{{ @$n3->new->title }}</h6>
-                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ $n3->created_at->format('Y-m-d') }}</span>
-                                                    <p>{{@$n3->new->detail }}</p>
+                                                    <h6><a href="details.html"></a>{{ @$n3->article->title }}</h6>
+                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ $n3->article->created_at->format('Y-m-d') }}</span>
+                                                    <p>{{@$n3->article->detail }}</p>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -142,21 +142,21 @@
                                     </div>
                                     <div class="cont-two-atr">
                                         <div class="item-cont-art">
-                                            <figure><img src="{{ $new4->new->image }}" alt="" /></figure>
+                                            <figure><img src="{{ $new4->article->image }}" alt="" /></figure>
                                             <div class="txt--art">
-                                                <h4><a href="">  {{ $new4->new->title }}    </a></h4>
-                                                <span> {{ $new4->new->created_at->format('Y-m-d') }}  </span>
+                                                <h4><a href="">  {{ $new4->article->title }}    </a></h4>
+                                                <span> {{ $new4->article->created_at->format('Y-m-d') }}  </span>
                                                <p></p>
                                             </div>
                                         </div>
                                         <div class="cont-ds-news">
                                             @foreach($news4 as $n4)
                                             <div class="item-ds-news">
-                                                <figure><img src="{{ $n4->new->image }}" alt="" /></figure>
+                                                <figure><img src="{{ $n4->article->image }}" alt="" /></figure>
                                                 <div class="txt-ds-news">
-                                                    <h6><a href="details.html"></a>{{ $n4->new->title }}</h6>
-                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ @$n4->created_at->format('Y-m-d') }}</span>
-                                                    <p>{{ $n4->new->detail }}</p>
+                                                    <h6><a href="details.html"></a>{{ $n4->article->title }}</h6>
+                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ @$n4->article->created_at->format('Y-m-d') }}</span>
+                                                    <p>{{ $n4->article->detail }}</p>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -206,7 +206,7 @@
                                     <figure><img src="{{$last_new->image}}" alt="" /></figure>
                                     <div class="txt-ds-news">
                                         <h6><a href="details.html"></a>{{ $last_new->title }}</h6>
-                                        <span><i class="fa-solid fa-calendar-days"></i> {{$new->created_at->format('Y-m-d')}}</span>
+                                        <span><i class="fa-solid fa-calendar-days"></i> {{$last_new->created_at->format('Y-m-d')}}</span>
                                     </div>
                                 </div>
                                 @endforeach

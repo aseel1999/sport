@@ -259,7 +259,7 @@ class ArticleController extends Controller
     
     
     public function details($id){
-       $new=Neww::where('id',$id)->first();
+       $new=Article::where('id',$id)->first();
        
        $new->update([
         'views'=>$new->views+1

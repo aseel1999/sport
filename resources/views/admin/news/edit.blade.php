@@ -50,14 +50,16 @@
                         <div class="row col-sm-12">
                             <div class="card-body">
                                 <div class="row">
-                                    @if($item->id!=1)
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label> {{__('cp.categories')}}</label>
-                                            <select class="form-control form-control-solid select2" name="categories[]"
-                                                multiple required>
-                                                @foreach($categories as $one)
-                                                    <option value="{{$one->id}}" {{in_array($one->id,old('categories',@$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$one->name}}</option>
+                                            <label> {{__('cp.categories')}} </label>
+                                            <select class="form-control form-control-solid select2" id="categories" name="categories[]"
+                                                multiple="multiple" required>
+
+                                                @foreach($categories as $roleItem)
+                                                    <option value="{{$roleItem->id}}" {{in_array($roleItem->id,old('categories',$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$roleItem->name}}</option>
+        
                                                 @endforeach
                                             </select>
                                               @if ($errors->has('categories'))
@@ -67,7 +69,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    @endif
+                                    
 
                                 
                                     <div class="col-md-6">

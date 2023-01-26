@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 
 @include('admin.layouts.head')
 
@@ -18,7 +18,7 @@
                             <div class="owl-carousel" id="slider-home">
                                 <div class="item">
                                     <div class="big-news">
-                                        <figure><img src="{{ ('web/image/ad.png')}}" alt="" /></figure>
+                                        <figure><img src="{{ asset('web/image/ad.png')}}" alt="" /></figure>
                                         <div class="txt-big-news">
                                             <h4><a href="details.html">المنتخب السعودي يصدم التانجو الأرجنتيني</a></h4>
                                         </div>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="big-news">
-                                        <figure><img src="{{ ('web/image/ad.png')}}" alt="" /></figure>
+                                        <figure><img src="{{ asset('web/image/ad.png')}}" alt="" /></figure>
                                         <div class="txt-big-news">
                                             <h4><a href="details.html">المنتخب السعودي يصدم التانجو الأرجنتيني</a></h4>
                                         </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="big-news">
-                                        <figure><img src="{{ ('web/image/ad.png')}}" alt="" /></figure>
+                                        <figure><img src="{{asset ('web/image/ad.png')}}" alt="" /></figure>
                                         <div class="txt-big-news">
                                             <h4><a href="details.html">المنتخب السعودي يصدم التانجو الأرجنتيني</a></h4>
                                         </div>
@@ -65,7 +65,7 @@
                                             <figure><img src="{{ $one->new->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
                                                 <h6><a href="details.html"> {{ $one->new->title }}</a></h6>
-                                                <span><i class="fa-solid fa-calendar-days"></i> {{ $one->created_at->format('Y-m-d') }}</span>
+                                                <span><i class="fa-solid fa-calendar-days"></i> {{ $one->created_at->format('Y-m-d')}}</span>
                                                 <p>{{ @$one->new->detail }}.</p>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                                                 <figure><img src="{{ $n4->new->image }}" alt="" /></figure>
                                                 <div class="txt-ds-news">
                                                     <h6><a href="details.html"></a>{{ $n4->new->title }}</h6>
-                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ $n4->created_at->format('Y-m-d') }}</span>
+                                                    <span><i class="fa-solid fa-calendar-days"></i> {{ @$n4->created_at->format('Y-m-d') }}</span>
                                                     <p>{{ $n4->new->detail }}</p>
                                                 </div>
                                             </div>

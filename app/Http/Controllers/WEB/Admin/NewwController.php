@@ -84,7 +84,7 @@ class NewwController extends Controller
 
     public function store(Request $request)
     {
-        return $request->categories;
+        
         $roles = [
             
             
@@ -113,6 +113,7 @@ class NewwController extends Controller
             $item->image = $this->storeImage($request->image, 'news');
         }
         $item->save();
+        
         if($request->has('filename')  && !empty($request->filename))
         {
             foreach($request->filename as $one)
@@ -133,10 +134,11 @@ class NewwController extends Controller
                 }
             }
         }
+       
         if($request->categories!= null){
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'neww_id' => $item->id,
+                    'new_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
@@ -144,7 +146,6 @@ class NewwController extends Controller
             NewwCategory::insert($values);
 
         }
-
         activity()->causedBy(auth('admin')->user())->log(' إضافة خبر جديد ');
         return redirect()->back()->with('status', __('cp.create'));
     }
@@ -168,6 +169,7 @@ class NewwController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         $roles = [
             
             
@@ -197,6 +199,7 @@ class NewwController extends Controller
             $item->image = $this->storeImage($request->image, 'news' , $item->getRawOriginal('image') );
         }
         $item->save();
+       
         $imgsIds = $item->images->pluck('id')->toArray();
         $newImgsIds = ($request->has('oldImages'))? $request->oldImages:[];
         $diff = array_diff($imgsIds,$newImgsIds);
@@ -222,16 +225,17 @@ class NewwController extends Controller
                 }
             }
         }
+        
         if($request->categories != null){
             
             foreach($request->categories as $categoryId){
                 $values[] = [
-                    'neww_id' => $item->id,
+                    'new_id' => $item->id,
                     'category_id' => $categoryId,
 
                 ];
             }
-            NewwCategory::where('neww_id',$item->id)->delete();
+            NewwCategory::where('new_id',$item->id)->delete();
              NewwCategory::insert($values);
 
         }

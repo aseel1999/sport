@@ -3,7 +3,7 @@
         <div class="container">
             <div class="time-site d-flex align-items-center">
                 <i class="fa-regular fa-clock"></i>
-                <p> {{ $settings->created_at->format('Y-m-d') }} </p>
+                <p> {{ $setting->created_at->translatedFormat('l j F Y')}} </p>
             </div>
             <ul class="list-social">
                 <li><a href=""><i class="fa-solid fa-info"></i></a></li>
@@ -21,7 +21,7 @@
     <div class="middle-header">
         <div class="container">
             <div class="logo-site">
-                <a href="index.html">
+                <a href="{{ url(getLocal().'/') }}">
                     <img src="{{asset('uploads/images/settings/'.$settings->app_logo)}}"alt="logo" />
                 </a>
             </div>
@@ -33,12 +33,22 @@
     <div class="bt-header">
         <div class="container">
             <ul class="main_menu clearfix">
-                <li class="active"><a class="page-scroll" href="index.html">@lang('website.basic')</a></li>
-                <li><a class="page-scroll" href="inner-page.html"> @lang('website.local news')</a></li>
-                <li><a class="page-scroll" href="inner-page.html"> @lang('website.global and local') </a></li>
-                <li><a class="page-scroll" href="inner-page.html"> @lang('website.sport others') </a></li>
-                <li><a class="page-scroll" href="inner-page.html">  @lang('website.matches')</a></li>
-                <li><a class="page-scroll" href="inner-page.html"> @lang('website.videoes')</a></li>
+                <li class="active"><a class="page-scroll" href="{{ url(getLocal().'/') }}">@lang('website.basic')</a></li>
+                <li><a class="page-scroll" href="{{ url(getLocal().'/inner-page') }}"> @lang('website.local news')</a></li>
+                <li><a class="page-scroll" href="{{ url(getLocal().'/inner-page') }}"> @lang('website.global and local') </a></li>
+                <li class="dropdown">
+                    <a class="page-scroll dropdown-toggle " id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="true"> @lang('website.sport others') </a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 45px);">
+                        <li><a class="dropdown-item page-scroll" href="overview.html">@lang('website.basketball')</a></li>
+                        <li><a class="dropdown-item page-scroll" href="chairmen.html">@lang('website.volleyball')</a></li>
+                        <li><a class="dropdown-item page-scroll" href="values.html">@lang('website.handball')</a></li>
+                        <li><a class="dropdown-item page-scroll" href="vision.html">@lang('website.tennis')</a></li>
+                        <li><a class="dropdown-item page-scroll" href="board-members.html">@lang('website.others')</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="{{ url(getLocal().'/inner-page') }}">  @lang('website.matches')</a></li>
+                <li><a class="page-scroll" href="{{ url(getLocal().'/inner-page') }}"> @lang('website.videoes')</a></li>
+                <li><a class="page-scroll" href="{{ url(getLocal().'/inner-page') }}"> @lang('website.articles and opinions')</a></li>
                 
                 
 

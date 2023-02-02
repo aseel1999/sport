@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WEB\Admin;
 
 use App\Models\Video;
 use App\Models\Album;
-use App\Models\Neww;
+use App\Models\Article;
 use App\Models\Admin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $news_count =Neww::count();
+        $news_count =Article::count();
         $admins=Admin::count();
        $albums=Album::count();
         $videoes = Video::count();
@@ -37,8 +37,9 @@ class HomeController extends Controller
         if ($model == "admins") $role = 'App\Models\Admin';
         if ($model == "categories") $role = 'App\Models\Category';
         if ($model == "albums") $role = 'App\Models\Album';
-        if ($model == "news") $role = 'App\Models\Neww';
+        if ($model == "articles") $role = 'App\Models\Article';
         if ($model == "videoes") $role = 'App\Models\Video';
+        if ($model == "opinions") $role = 'App\Models\Opinion';
         if ($model == "contacts") $role = 'App\Models\Contact';
         if ($model == "users") $role = 'App\Models\User';
         if ($model == "roles") $role = 'App\Models\Role';

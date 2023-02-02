@@ -46,7 +46,7 @@ $(document).ready(function(){
     /*page-scroll*/
     
     
-    $('#slide-home').owlCarousel({
+    $('#slider-home').owlCarousel({
         loop: true,
         rtl: rtl,
         responsiveClass: true,
@@ -54,51 +54,7 @@ $(document).ready(function(){
         dots: true,
         nav: false,
         autoplay: false,
-//        navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
     });
     
-    $(".coloum6").owlCarousel({
-        loop: true,
-        margin: 40,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 2,
-                margin: 10,
-            },
-            992: {
-                items: 6,
-            },
-            1199: {
-                items: 6,
-            }
-        },
-        dots: true,
-        nav: false,
-        rtl: rtl,
-        autoplay: false
-    });
-    
-    /**============FOCUS CONTACT============**/
-    $(".form-contact .form-group .form-control").focus(function(){
-
-             $(this).parent().addClass('hasValue');
-
-        });
-        $(".form-contact .form-group .form-control").focusout(function(){
-
-            var val = $(this).val();
-
-            if(val === ''){
-
-                 $(this).parent().removeClass('hasValue');
-
-            } else{
-
-                $(this).removeClass('hasError');
-
-            }
-
-    })
 
 })

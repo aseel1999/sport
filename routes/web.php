@@ -43,7 +43,17 @@ Route::group([
     });
 
     Route::get('/', 'WEB\Site\HomeController@index')->name('home');
+    Route::get('/layout', 'WEB\Site\HomeController@layout')->name('layout');
     Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details')->name('details');
+    Route::get('/contact-us','WEB\Site\HomeController@contact')->name('contact');
+    Route::post('/contact-us-store','WEB\Site\HomeController@contactUs')->name('contactUs');
+    Route::get('/privacy', 'WEB\Site\HomeController@privacy')->name('privacy');
+    Route::get('/terms', 'WEB\Site\HomeController@terms')->name('terms');
+    Route::get('/opinions', 'WEB\Site\HomeController@opinions')->name('opinions');
+    Route::get('/opinion-details/{id}', 'WEB\Site\HomeController@opinionDetail')->name('opinionDetail');
+    Route::get('/infographic', 'WEB\Site\HomeController@infographic')->name('infographic');
+    Route::get('/about', 'WEB\Site\HomeController@about')->name('about');
+    Route::get('/inner-page', 'WEB\Site\HomeController@locale')->name('inner_page');
 
     //ADMIN AUTH ///
     Route::group(['prefix' => 'admin'], function () {
@@ -82,41 +92,23 @@ Route::group([
         Route::get('/changeMyPassword', 'WEB\Admin\AdminController@changeMyPassword')->name('admins.changeMyPassword');
         Route::post('/updateMyPassword', 'WEB\Admin\AdminController@updateMyPassword')->name('admins.updateMyPassword');
 
-
-
-        Route::get('/users', 'WEB\Admin\UsersController@index')->name('users.all');
-        Route::post('/users', 'WEB\Admin\UsersController@store')->name('users.store');
-        Route::get('/users/create', 'WEB\Admin\UsersController@create')->name('users.create');
-        Route::delete('users/{id}', 'WEB\Admin\UsersController@destroy')->name('users.destroy');
-        Route::get('/users/{id}/edit', 'WEB\Admin\UsersController@edit')->name('users.edit');
-        Route::get('/users/{id}/show', 'WEB\Admin\UsersController@show')->name('users.show');
-        Route::get('/users/{id}/articles', 'WEB\Admin\UsersController@articles')->name('users.articles');
-        Route::get('/users/{id}/{article_id}/editArticle', 'WEB\Admin\UsersController@editArticle')->name('users.editArticle');
-        Route::patch('/users/{id}', 'WEB\Admin\UsersController@update')->name('users.update');
-        Route::get('/users/{id}/edit_password', 'WEB\Admin\UsersController@edit_password')->name('users.edit_password');
-        Route::post('/users/{id}/edit_password', 'WEB\Admin\UsersController@update_password')->name('users.edit_password');
-        Route::get('/exportUsers', 'WEB\Admin\UsersController@exportUsers');
-        Route::get('/pdfUsers', 'WEB\Admin\UsersController@pdfUsers');
-
-
-
-        
-
         
         Route::resource('/categories', 'WEB\Admin\CategoryController');
         Route::resource('/albums','WEB\Admin\AlbumController');
         Route::resource('/videoes','WEB\Admin\VideoController');
+        Route::resource('/opinions','WEB\Admin\OpinionController');
         Route::resource('/landingPages','WEB\Admin\LandingPageController');
         Route::get('/land','WEB\Admin\LandingPageController@land');
 
         
-
+        
         
 
 
         
 
         Route::resource('/news', 'WEB\Admin\ArticleController');
+        Route::resource('/sports', 'WEB\Admin\SportController');
         Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details');
 
         Route::get('/contacts', 'WEB\Admin\ContactController@index');
@@ -147,36 +139,8 @@ Route::group([
 
 
 
-    Route::group(['prefix' => 'provider'], function () {
-        Route::get('/', function () {
-            return route('/login');
-        });
-        Route::get('/login', 'SubAdminAuth\LoginController@showLoginForm')->name('subadmin.login.form');
-        Route::post('/login', 'SubAdminAuth\LoginController@login')->name('subadmin.login');
-        Route::get('/logout', 'SubAdminAuth\LoginController@logout')->name('subadmin.logout');
-
-    });
-    Route::group(['middleware' => ['web', 'subadmin'], 'prefix' => 'provider', 'as' => 'provider.',], function () {
-        Route::get('/', function () {
-            return redirect('/provider/home');
-        });
-        Route::post('/changeStatus/{model}', 'WEB\SubAdmin\HomeController@changeStatus');
-
-        Route::get('home', 'WEB\SubAdmin\HomeController@index')->name('provider.home');
-
-
-        Route::get('/editMyProfile', 'WEB\SubAdmin\SubAdminController@editMyProfile')->name('provider.editMyProfile');
-        Route::post('/updateProfile', 'WEB\SubAdmin\SubAdminController@updateProfile')->name('provider.updateProfile');
-
-        Route::get('/articles/{id}/details', 'WEB\SubAdmin\ArticleController@details');
-        Route::resource('/articles', 'WEB\SubAdmin\ArticleController');
-
-        
-        
-        Route::get('settings', 'WEB\SubAdmin\SettingController@index');
-        Route::post('settings', 'WEB\SubAdmin\SettingController@update');
-
-    });
+   
+   
 
 
 

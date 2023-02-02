@@ -118,6 +118,7 @@
                                     </th>
                                     <th class="wd-5p"> {{ucwords(__('cp.name_video'))}}</th>
                                     <th class="wd-5p"> {{ucwords(__('cp.url'))}}</th>
+                                    <th class="wd-15p"> {{ucwords(__('cp.image'))}}</th>
                                     <th class="wd-10p"> {{ucwords(__('cp.created'))}}</th>
                                     <th class="wd-15p"> {{ucwords(__('cp.action'))}}</th>
                                 </tr>
@@ -135,6 +136,7 @@
 
                                         <td class="v-align-middle wd-5p">{{ $one->name_video }}</td>
                                         <td class="v-align-middle wd-5p">{{ $one->url }}</td>
+                                        <td class="v-align-middle wd-15p"><img src="{{$one->image}}" width="50px" height="50px"></td>
                                         <td class="v-align-middle wd-10p">{{$one->created_at->format('Y-m-d')}}</td>
 
                                         <td class="v-align-middle wd-15p optionAddHours">

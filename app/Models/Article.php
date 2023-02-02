@@ -9,7 +9,7 @@ use Astrotomic\Translatable\Translatable;
 class Article extends Model
 {
     use HasFactory,Translatable;
-    protected $translatedAttributes=['title','detail'];
+    protected $translatedAttributes=['title','detail','subtitle'];
     protected $hidden = ['translations' ,'updated_at'];
     protected $table='articles';
     protected $fillable=['views'];
@@ -25,13 +25,14 @@ class Article extends Model
             return url('uploads/images/users/defualtUser.jpg');
         }
     }
-    public function detail(){
-        return $this->hasOne(Article::class);
+    
+    public function sport(){
+        return $this->belongsTo(Sport::class);
     }
-    public function categories()
-    {
-        return $this->hasMany(ArticleCategory::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
+    
     public function images()
     {
         return $this->hasMany(ArticleImage::class, 'article_id');

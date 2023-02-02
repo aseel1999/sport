@@ -48,9 +48,9 @@ class AppServiceProvider extends ServiceProvider
                 'setting' => Setting::query()->first(),
                 'locales'=> Language::all(),
                 'admin'=>Admin::first(),
-                'contact'=> Contact::where('is_read',0)->count(),
-                'count_orders'=> 1,
-                'count_categories'=> 5,
+                'contact'=> Contact::count(),
+                
+                'count_categories'=> Category::count(),
               //  'users_count'=>User::count(),
 
             ]);

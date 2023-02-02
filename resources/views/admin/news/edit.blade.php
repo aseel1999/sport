@@ -50,28 +50,36 @@
                         <div class="row col-sm-12">
                             <div class="card-body">
                                 <div class="row">
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label> {{__('cp.categories')}} </label>
-                                            <select class="form-control form-control-solid select2" id="categories" name="categories[]"
-                                                multiple="multiple" required>
-
-                                                @foreach($categories as $one)
-                                                    <option value="{{$one->id}}" {{in_array($one->id,old('categories',$item->categories->pluck('category_id')->toArray())) ? "selected":"" }}>{{$one->name}}</option>
-        
+                                            <label>{{__('cp.sport')}}</label>
+                                            <select   class="form-control form-control-solid"
+                                                      name="sport_id" id="sport_id" required>
+                                            <option value="">@lang('cp.select') </option>
+                                            @foreach($sports as $sport)
+                                                    <option value="{{$sport->id}}" data-id="{{$sport->id}}" {{$item->sport_id==$sport->id ? 'selected':''}}> {{$sport->sport_name}} </option>
                                                 @endforeach
                                             </select>
-                                              @if ($errors->has('categories'))
-                                                <span class="help-block">
-                                                <strong>{{ $errors->first('categories') }}</strong>
-                                                    </span>
-                                            @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{__('cp.category')}}</label> 
+                                            <select class="form-control form-control-solid"
+                                                    id="category_id"
+                                                    name="category_id" required>
+                                                <option value=""> @lang('cp.select') </option>
+                                            @foreach($categories as $category)
+                                                    <option value="{{$category->id}}" {{$item->category_id==$category->id ? 'selected':''}}> {{$category->name}} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
                                     
 
-                                
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{__('cp.is_post')}}</label>
@@ -98,6 +106,19 @@
                                                 <input type="text" class="form-control form-control-solid"
                                                        name="title_{{$locale->lang}}"
                                                        {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} value="{{old('title_'.$locale->lang,@$item->translate($locale->lang)->title)}}"
+                                                       required/>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="row">
+                                    @foreach($locales as $locale)
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{__('cp.subtitle_'.$locale->lang)}}</label>
+                                                <input type="text" class="form-control form-control-solid"
+                                                       name="subtitle_{{$locale->lang}}"
+                                                       {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} value="{{old('subtitle_'.$locale->lang,@$item->translate($locale->lang)->subtitle)}}"
                                                        required/>
                                             </div>
                                         </div>

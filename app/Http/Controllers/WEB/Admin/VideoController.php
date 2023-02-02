@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\WEB\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Traits\imageTrait;
 use Intervention\Image\Facades\Image;
 use App\Models\Language;
 use App\Models\Video;
@@ -10,6 +11,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 class VideoController extends Controller
 {
+    use imageTrait;
     public function __construct()
     {
         $this->locales = Language::all();
@@ -63,6 +65,7 @@ class VideoController extends Controller
     {
         {
             $roles = [
+                'image' => 'required|image|mimes:jpeg,jpg,png,gif',
             ];
             $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
@@ -79,8 +82,11 @@ class VideoController extends Controller
             $item->translateOrNew($locale)->url = $request->get('url_' . $locale);
             
         } 
+        if ($request->hasFile('image') && $request->image != '') {
+            $item->image = $this->storeImage($request->image, 'videoes');
+        }
             $item->save();
-           // activity()->causedBy(auth('admin')->user())->log(' إضافة فيديو جديد');
+           activity()->causedBy(auth('admin')->user())->log(' إضافة فيديو جديد');
             return redirect()->back()->with('status', __('cp.create'));
         }
         
@@ -95,7 +101,7 @@ class VideoController extends Controller
         public function update(Request $request, $id)
     {
         $roles = [
-            
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
@@ -111,6 +117,9 @@ class VideoController extends Controller
         {
             $item->translateOrNew($locale)->name_video = $request->get('name_video_' . $locale);
             $item->translateOrNew($locale)->url = $request->get('url_' . $locale);
+        }
+        if ($request->hasFile('image') && $request->image != '') {
+            $item->image = $this->storeImage($request->image, 'videoes' , $item->getRawOriginal('image') );
         }
         $item->save();
         return redirect()->back()->with('status', __('cp.update'));

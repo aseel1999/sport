@@ -4,14 +4,15 @@ namespace App\Http\Controllers\WEB\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Traits\imageTrait;
 use App\Models\Language;
-use App\Models\User;
 use Intervention\Image\Facades\Image;
-use App\Models\OpinionDetail;
-use App\Models\Admin;
+use App\Models\Opinion;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 class OpinionController extends Controller
 {
+    use imageTrait;
     public function __construct()
     {
         $this->settings = Setting::query()->first();
@@ -30,7 +31,7 @@ class OpinionController extends Controller
                  return $next($request);
              }
              }elseif($route_name== 'edit' || $route_name== 'update'){
-                if(can('articles-edit')){
+                if(can('opinions-edit')){
                    return $next($request);
                }
           }elseif($route_name== 'destroy' || $route_name== 'delete'){
@@ -52,27 +53,55 @@ class OpinionController extends Controller
 }
 public function index()
     {
+        $items =Opinion::filter()->orderBy('id', 'desc')->get();
         
-        $items = OpinionDetail::filter()->orderBy('id', 'desc')->paginate(30);
-        return view('admin.opinion_details.home', [
+        return view('admin.opinions.home', [
             'items' =>$items,
             
         ]);
     }
 
 
-    public function show($id)
+    public function create()
     {
-        $item = OpinionDetail::where('id',$id)->first();
-        return view('admin.opinion_details.show', [
-            'item' =>$item,
-        ]);
+        return view('admin.opinions.create');
+    }
+    public function store(Request $request){
+        $roles = [
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            
+
+        ];
+        $locales = Language::all()->pluck('lang');
+        foreach ($locales as $locale) {
+            $roles['name_author_' . $locale] = 'required';
+            $roles['title_' . $locale] = 'required';
+            $roles['detail_' . $locale] = 'required';
+        }
+        $this->validate($request, $roles);
+        $item= new Opinion();
+       
+
+        foreach ($locales as $locale)
+        {
+            $item->translateOrNew($locale)->name_author = $request->get('name_author_' . $locale);
+            $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
+            $item->translateOrNew($locale)->detail = $request->get('detail_' . $locale);
+        } 
+        if ($request->hasFile('image') && $request->image != '') {
+            $item->image = $this->storeImage($request->image, 'opinions');
+        }
+        $item->save();
+        activity()->causedBy(auth('admin')->user())->log(' إضافة رأي جديد ');
+        return redirect()->back()->with('status', __('cp.create'));
+        
+        
     }
     public function edit($id)
         {
             
-            $item = OpinionDetail::where('id',$id);
-            return view('admin.opinion_details.edit', [
+            $item = Opinion::findOrFail($id);
+            return view('admin.opinions.edit', [
                 'item' => $item,
                 
             ]);
@@ -81,33 +110,36 @@ public function index()
         public function update(Request $request, $id)
     {
         $roles = [
-            'user_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
-            $roles['opinion_' . $locale] = 'required';
-            $roles['day_' . $locale] = 'required';
+            $roles['name_author_' . $locale] = 'required';
+            $roles['title_' . $locale] = 'required';
+            $roles['detail_' . $locale] = 'required';
         }
         $this->validate($request, $roles);
 
-        $item = OpinionDetail::query()->findOrFail($id);
-        $item->user_id = $request->user_id;
-       
+        $item = Opinion::query()->findOrFail($id);
 
         foreach ($locales as $locale)
         {
-        $item->translateOrNew($locale)->opinion = $request->get('opinion_' . $locale);
-        }$item->translateOrNew($locale)->day = $request->get('day_' . $locale);
-        
+            $item->translateOrNew($locale)->name_author = $request->get('name_author_' . $locale);
+            $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
+            $item->translateOrNew($locale)->detail = $request->get('detail_' . $locale);
+        }
+        if ($request->hasFile('image') && $request->image != '') {
+            $item->image = $this->storeImage($request->image, 'opinions' , $item->getRawOriginal('image') );
+        }
         $item->save();
         return redirect()->back()->with('status', __('cp.update'));
     }
 
     public function destroy($id)
     {
-        $ad = OpinionDetail::query()->findOrFail($id);
+        $ad = Opinion::query()->findOrFail($id);
         if ($ad) {
-            OpinionDetail::query()->where('id', $id)->delete();
+            Opinion::query()->where('id', $id)->delete();
 
             return "success";
         }

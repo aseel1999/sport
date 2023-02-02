@@ -50,24 +50,34 @@
                         <div class="row col-sm-12">
                             <div class="card-body">
                                 <div class="row">
-                                   
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label> {{__('cp.categories')}}</label>
-                                            <select class="form-control select2" id="categories" name="categories[]"
-                                                    multiple="multiple" required>
-        
-                                                @foreach($categories as $categoryItem)
-                                                    <option value="{{$categoryItem->id}}" {{old('categories.'.$loop->index)==$categoryItem->id?'selected':''}}>{{$categoryItem->name}}</option>
+                                            <label>{{__('cp.sport')}}</label>
+                                            <select class="form-control form-control-solid"
+                                                    name="sport_id" id="sport_id" required>
+                                                <option value=""> @lang('cp.select')</option>
+                                                @foreach($sports as $sport)
+                                                    <option value="{{$sport->id}}"
+                                                            data-id="{{$sport->id}}"> {{@$sport->sport_name}} </option>
                                                 @endforeach
                                             </select>
-                                            @if ($errors->has('categories'))
-                                                <span class="help-block">
-                                                            <strong>{{ $errors->first('categories') }}</strong>
-                                                                </span>
-                                            @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{__('cp.category')}}</label>
+                                            <select class="form-control form-control-solid"
+                                                    name="category_id" id="category_id" required>
+                                                <option value=""> @lang('cp.select')</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}"
+                                                            data-id="{{$category->id}}"> {{$category->name}} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -101,6 +111,19 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                <div class="row">
+                                    @foreach($locales as $locale)
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{__('cp.subtitle_'.$locale->lang)}}</label>
+                                                <input type="text" class="form-control form-control-solid"
+                                                       {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="subtitle_{{$locale->lang}}"
+                                                       value="{{old('subtitle_'.$locale->lang)}}" required/>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
 
                             <div class="row">
                                 @foreach($locales as $locale)

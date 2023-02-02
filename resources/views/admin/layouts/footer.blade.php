@@ -12,10 +12,10 @@
                     <div class="menu-ft">
                         <h5>@lang('website.FastUrls')</h5>
                         <ul class="li-ft wow fadeInUp">
-                            <li><a href="index.html">@lang('website.basic')</a></li>
-                            <li><a href="privacy.html">@lang('website.privacy_policy')</a></li>
-                            <li><a href="about.html">@lang('website.about_us')</a></li>
-                            <li><a href="contact.html"> @lang('website.contact_us')</a></li>
+                            <li><a href="{{ url(getLocal().'/') }}">@lang('website.basic')</a></li>
+                            <li><a href="{{ url(getLocal().'/privacy') }}">@lang('website.privacy_policy')</a></li>
+                            <li><a href="{{ url(getLocal().'/about') }}">@lang('website.about_us')</a></li>
+                            <li><a href="{{ url(getLocal().'/contact-us') }}"> @lang('website.contact_us')</a></li>
                         </ul>
                     </div>
                 </div>

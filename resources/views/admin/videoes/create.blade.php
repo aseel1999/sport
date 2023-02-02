@@ -73,6 +73,27 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="card-body col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{__('cp.image')}}</label>
+                                        <div class="fileinput-new thumbnail"
+                                             onclick="document.getElementById('edit_image').click()"
+                                             style="cursor:pointer">
+                                            <img src="{{choose()}}" id="editImage" alt="">
+                                        </div>
+                                        <div class="btn red"
+                                             onclick="document.getElementById('edit_image').click()">
+                                            <i class="fa fa-pencil"></i>
+                                        </div>
+                                        <input type="file" class="form-control" name="image"
+                                               id="edit_image"
+                                               style="display:none">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         
 

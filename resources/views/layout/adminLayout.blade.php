@@ -275,7 +275,40 @@
 
 
                                 @endif
+								@if(can(['sports-show' , 'sports-create' , 'sports-edit' , 'sports-delete']))
+                                    <li class="menu-item {{(explode("/", request()->url())[5] == "sports") ? "menu-item-here" : ''}}" aria-haspopup="true">
+                                        <a href="{{url(getLocal().'/admin/sports')}}" class="menu-link">
+										<span class="svg-icon menu-icon">
+										<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Design/Border.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M7,6 C6.44771525,6 6,6.44771525 6,7 L6,17 C6,17.5522847 6.44771525,18 7,18 L17,18 C17.5522847,18 18,17.5522847 18,17 L18,7 C18,6.44771525 17.5522847,6 17,6 L7,6 Z M7,4 L17,4 C18.6568542,4 20,5.34314575 20,7 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 Z" fill="#000000" fill-rule="nonzero"/>
+                                            </g>
+                                        </svg>
+										</span>
+                                            <span class="menu-text">{{__('cp.sports')}}</span>
+                                        </a>
+                                    </li>
 
+
+                                @endif
+								@if(can(['opinions-show' , 'opinions-create' , 'opinions-edit' , 'opinions-delete']))
+								<li class="menu-item {{(explode("/", request()->url())[5] == "opinions") ? "menu-item-here" : ''}}" aria-haspopup="true">
+									<a href="{{url(getLocal().'/admin/opinions')}}" class="menu-link">
+									<span class="svg-icon menu-icon">
+									<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Design/Border.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<path d="M7,6 C6.44771525,6 6,6.44771525 6,7 L6,17 C6,17.5522847 6.44771525,18 7,18 L17,18 C17.5522847,18 18,17.5522847 18,17 L18,7 C18,6.44771525 17.5522847,6 17,6 L7,6 Z M7,4 L17,4 C18.6568542,4 20,5.34314575 20,7 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 Z" fill="#000000" fill-rule="nonzero"/>
+										</g>
+									</svg>
+									</span>
+										<span class="menu-text">{{__('cp.opinions')}}</span>
+									</a>
+								</li>
+
+
+							@endif
 
                                 @if(can(['contacts-show' , 'contacts-edit' , 'contacts-delete']))
                                     <li class="menu-item {{(explode("/", request()->url())[5] == "contacts") ? "menu-item-here" : ''}}"                                     aria-haspopup="true">
@@ -292,7 +325,7 @@
                                             <span class="menu-text">{{__('cp.contacts')}}</span>
 
                                             @php
-                                                $contacts_count=\App\Models\Contact::query()->where('is_read','0')->count();
+                                                $contacts_count=\App\Models\Contact::query()->count();
                                             @endphp
                                             @if($contacts_count>0)
                                                 <span class="label label-rounded label-danger">{{$contacts_count}}</span>
@@ -302,7 +335,8 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if(can(['pages-show', 'pages-edit']))
+                                
+								@if(can(['pages-show', 'pages-edit']))
                                     <li class="menu-item {{(explode("/", request()->url())[5] == "pages") ? "menu-item-here" : ''}}" aria-haspopup="true">
                                         <a href="{{url(getLocal().'/admin/pages')}}" class="menu-link">
 											<span class="svg-icon menu-icon">

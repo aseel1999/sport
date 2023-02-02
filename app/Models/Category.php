@@ -15,8 +15,8 @@ class Category extends Model
 
     protected $hidden = ['translations' ,'updated_at','deleted_at'];
 
-    public function news(){
-         return $this->hasMany(Neww::class);
+    public function articles(){
+         return $this->hasMany(Article::class);
     }
     public function scopeFilter($query)
     {

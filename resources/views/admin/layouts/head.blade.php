@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="{{app()->getLocale()}}" dir="{{(app()->getLocale() == 'ar') ? 'rtl' : 'ltr'}}">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title> ملاعب فلسطين</title>
+    <title> سرمد</title>
     <!-- Stylesheets -->
-    <link rel="icon" href="images/favicon.svg">
+    <link rel="icon" href="{{url('web/image/favicon.svg')}}">
     <link href="{{url('web/css/style.css')}}" rel="stylesheet">
     <!-- Responsive -->
     <link href="{{url('web/css/responsive.css')}}" rel="stylesheet">

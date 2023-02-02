@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
-    use SoftDeletes;
-    protected $fillable = ['name', 'email','title','message','mobile'];
-    protected $hidden = ['updated_at'];
+    protected $translatedAttributes=['translations' ,'name', 'email','title','message','phone'];
+    
+    protected $hidden = ['translations','updated_at'];
 
 
     public function scopeFilter($query)
@@ -39,11 +39,7 @@ class Contact extends Model
                 $query->where('message', 'like', '%' . request()->get('message') . '%');
         }
 
-        if (request()->has('is_read')) {
-            if (request()->get('is_read') != null)
-                $query->where('is_read', request()->get('is_read'));
-        }
-
+        
 
     }
 }

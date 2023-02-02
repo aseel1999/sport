@@ -13,7 +13,9 @@ use App\Models\Article;
 use App\Models\ArticleImage;
 use App\Models\Detail;
 use App\Models\Category;
-use App\Models\ArticleCategory;
+use App\Models\Sport;
+use Carbon\Carbon;
+
 
 class ArticleController extends Controller
 {
@@ -63,7 +65,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         
-        $items =Article::filter()->orderBy('id', 'desc')->get();
+        $items =Article::filter()->orderBy('id', 'desc')->paginate($this->settings->paginateTotal);
         
         return view('admin.news.home', [
             'items' =>$items,
@@ -77,9 +79,10 @@ class ArticleController extends Controller
     {
         
         $categories=Category::get();
+        $sports=Sport::get();
         return view('admin.news.create', [
-            
             'categories'=>$categories,
+            'sports'=>$sports,
         ]);}
 
 
@@ -91,24 +94,30 @@ class ArticleController extends Controller
             
             'is_post'=>'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif',
-            'categories'=>'required',
+            'category_id'=>'required',
+            'sport_id'=>'required',
+
 
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
             $roles['title_' . $locale] = 'required';
             $roles['detail_' . $locale] = 'required';
+            $roles['subtitle_' . $locale] = 'required';
         }
         $this->validate($request, $roles);
         $item= new Article();
         
         $item->is_post=$request->is_post;
+        $item->category_id=$request->category_id;
+        $item->sport_id=$request->sport_id;
         $item->image=$request->image;
 
         foreach ($locales as $locale)
         {
             $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
             $item->translateOrNew($locale)->detail = $request->get('detail_' . $locale);
+            $item->translateOrNew($locale)->subtitle = $request->get('subtitle_' . $locale);
         } 
         if ($request->hasFile('image') && $request->image != '') {
             $item->image = $this->storeImage($request->image, 'news');
@@ -136,17 +145,7 @@ class ArticleController extends Controller
             }
         }
        
-        if($request->categories!= null){
-            foreach($request->categories as $categoryId){
-                $values[] = [
-                    'article_id' => $item->id,
-                    'category_id' => $categoryId,
-
-                ];
-            }
-            ArticleCategory::insert($values);
-
-        }
+        
         activity()->causedBy(auth('admin')->user())->log(' إضافة خبر جديد ');
         return redirect()->back()->with('status', __('cp.create'));
     }
@@ -155,13 +154,13 @@ class ArticleController extends Controller
     public function edit($id)
         {
            
-        $item = Article::with('categories')->findOrFail($id);
-        
-            $categories=Category::orderBy('id','desc')->get();
+        $item = Article::where('id',$id)->first();
+        $categories=Category::get();
+        $sports=Sport::get();
             return view('admin.news.edit', [
                 'item' => $item,
                 'categories'=>$categories,
-                
+                'sports'=>$sports,
 
             ]);
 
@@ -176,12 +175,14 @@ class ArticleController extends Controller
             
             'is_post'=>'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif',
-            'categories'=>'required',
+            'category_id'=>'required',
+            'sport_id'=>'required',
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {
             $roles['title_' . $locale] = 'required';
             $roles['detail_' . $locale] = 'required';
+            $roles['subtitle_' . $locale] = 'required';
         }
         $this->validate($request, $roles);
 
@@ -189,12 +190,15 @@ class ArticleController extends Controller
         
        
        $item->is_post=$request->is_post;
+       $item->category_id=$request->category_id;
+       $item->sport_id=$request->sport_id;
        
 
         foreach ($locales as $locale)
         {
         $item->translateOrNew($locale)->title = $request->get('title_' . $locale);
         $item->translateOrNew($locale)->detail= $request->get('detail_' . $locale);
+        $item->translateOrNew($locale)->subtitle = $request->get('subtitle_' . $locale);
         }
         if ($request->hasFile('image') && $request->image != '') {
             $item->image = $this->storeImage($request->image, 'news' , $item->getRawOriginal('image') );
@@ -227,19 +231,7 @@ class ArticleController extends Controller
             }
         }
         
-        if($request->categories != null){
-            
-            foreach($request->categories as $categoryId){
-                $values[] = [
-                    'article_id' => $item->id,
-                    'category_id' => $categoryId,
-
-                ];
-            }
-            ArticleCategory::where('new_id',$item->id)->delete();
-             ArticleCategory::insert($values);
-
-        }
+        
         
         return redirect()->back()->with('status', __('cp.update'));
     }
@@ -260,12 +252,16 @@ class ArticleController extends Controller
     
     public function details($id){
        $new=Article::where('id',$id)->first();
-       
+       $articles=Article::orderBy('id','desc')->take(6)->get();
        $new->update([
         'views'=>$new->views+1
 
        ]);
        
-       return view ('admin.news.details');
+       return view ('admin.news.details
+       ',[
+        'new'=>$new,
+        'articles'=>$articles,
+       ]);
     }
 }

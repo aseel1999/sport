@@ -130,9 +130,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{__('cp.detail_'.$locale->lang)}}</label>
-                                                <textarea class="form-control form-control-solid"
+                                                <textarea class="form-control kt-tinymce-4"
                                                        {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="detail_{{$locale->lang}}"
-                                                       value="{{old('detail_'.$locale->lang)}}" required></textarea>
+                                                       value="{{old('detail_'.$locale->lang)}}" id="two" rows="8" required></textarea>
                                             
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                                 </span>
                                             @endif
                                             <div class="imageupload" style="display:flex;flex-wrap:wrap">
-
+        
                                             </div>
                                             <div class="input-group control-group increment">
                                                 <div class="input-group-btn"
@@ -182,7 +182,7 @@
                                                     </button>
                                                 </div>
                                                 <input type="file" class="form-control hidden" accept="image/*"
-                                                       id="all_images" multiple/>
+                                                       id="all_images" name="all_images" multiple/>
                                             </div>
                                         </div>
                                     </div>
@@ -202,21 +202,29 @@
 
 
 @endsection
+
 @section('js')
     <script>
         $('#edit_image').on('change', function (e) {
             readURL(this, $('#editImage'));
         });
-        $(document).on('click', '#submitButton', function () {
+        $(document).on('click', '#submitButtonNow', function () {
             // $('#submitButton').addClass('spinner spinner-white spinner-left');
-            $('#submitForm').click();
+            $('#submitFormNow').click();
         });
     </script>
-
+<script src="{{asset('/admin_assets/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
+<script src="{{asset('/admin_assets/js/pages/crud/forms/editors/tinymce.js')}}"></script>
 
 @endsection
+
 @section('script')
+<script src="{{asset('assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}"></script>
+<script src="{{asset('assets/js/pages/crud/file-upload/image-input.js')}}"></script>
+
     <script>
+
+
         function readURLMultiple(input, target) {
             if (input.files) {
                 var filesAmount = input.files.length;

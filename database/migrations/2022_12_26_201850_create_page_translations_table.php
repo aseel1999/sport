@@ -33,8 +33,8 @@ class CreatePageTranslationsTable extends Migration
                 ['page_id'=>'3','locale'=>'en','title'=>'terms of use','description'=>'description'],
                 ['page_id'=>'3','locale'=>'ar','title'=>'شروط الاستخدام','description'=>'description'],
 
-                ['page_id'=>'4','locale'=>'en','title'=>'return policy page','description'=>'description'],
-                ['page_id'=>'4','locale'=>'ar','title'=>'سياسة الارجاع','description'=>'description'],
+                ['page_id'=>'4','locale'=>'en','title'=>'contact','description'=>'description'],
+                ['page_id'=>'4','locale'=>'ar','title'=>'التواصل','description'=>'description'],
 
                 ]);
         }

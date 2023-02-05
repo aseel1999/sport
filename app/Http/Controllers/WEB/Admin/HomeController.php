@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Infographic;
-
+use App\Models\Opinion;
 use App\Models\Contact;
 use App\Models\Category;
 class HomeController extends Controller
@@ -43,6 +43,9 @@ class HomeController extends Controller
         if ($model == "contacts") $role = 'App\Models\Contact';
         if ($model == "users") $role = 'App\Models\User';
         if ($model == "roles") $role = 'App\Models\Role';
+        if ($model == "news") $role = 'App\Models\Article';
+        if ($model == "sports") $role = 'App\Models\Sport';
+        if ($model == "opinions") $role = 'App\Models\Opinion';
 
         if ($role != "") {
             if ($request->action == 'delete') {

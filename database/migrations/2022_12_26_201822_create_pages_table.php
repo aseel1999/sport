@@ -28,7 +28,7 @@ class CreatePagesTable extends Migration
                 ['image'=>'image.png','views'=>'1','slug'=>'about-us','status'=>'active',],
                 ['image'=>'image.png','views'=>'1','slug'=>'privacy-policy','status'=>'active',],
                 ['image'=>'image.png','views'=>'1','slug'=>'terms-of-use','status'=>'active',],
-                ['image'=>'image.png','views'=>'1','slug'=>'return_policy_page','status'=>'active',],
+                ['image'=>'image.png','views'=>'1','slug'=>'contact','status'=>'active',],
             ]);
         }
     }

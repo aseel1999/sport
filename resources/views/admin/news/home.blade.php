@@ -102,7 +102,7 @@
 
                                 </tbody>
                             </table>
-                            
+                            {{$items->appends($_GET)->links("pagination::bootstrap-4") }}
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,8 @@ return [
     'Infographic'=>'Infographic',
     'local news'=>'local news',
     'sport others'=>'sport others',
-    'global and local'=>'global and local',
+    'globalandArabic'=>'globalandArabic ',
+    
     'videoes'=>'videoes',
     'matches'=>'matches',
     'aajel'=>'aajel',
@@ -50,6 +51,7 @@ return [
     'share article'=>'share article',
     'retlated topics'=>'retlated topics',
     'contact_us'=>'contact_us',
+    'globals'=>'globals',
 
 
 

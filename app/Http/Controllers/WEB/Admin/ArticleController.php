@@ -11,10 +11,10 @@ use Intervention\Image\Facades\Image;
 use App\Models\Setting;
 use App\Models\Article;
 use App\Models\ArticleImage;
-use App\Models\Detail;
 use App\Models\Category;
 use App\Models\Sport;
 use Carbon\Carbon;
+
 
 
 class ArticleController extends Controller
@@ -135,17 +135,16 @@ class ArticleController extends Controller
                     if (in_array($fileType, ['jpg','jpeg','png','pmb'])){
                         $newName = $name. ".jpg";
                         $attachType = 1;
-                        Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/meals/$newName");
+                        Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/news/$newName");
                     }
                     $image=new ArticleImage();
-                    $image->article_id = $item->id;
+                    $image->article_id=$item->id;
                     $image->image = $newName;
-                    $image->save();
+                    $image->url='news/'.$newName;
+                    $item->images()->save($image);
                 }
             }
         }
-       
-        
         activity()->causedBy(auth('admin')->user())->log(' إضافة خبر جديد ');
         return redirect()->back()->with('status', __('cp.create'));
     }
@@ -221,12 +220,13 @@ class ArticleController extends Controller
                     if (in_array($fileType, ['jpg','jpeg','png','pmb'])){
                         $newName = $name. ".jpg";
                         $attachType = 1;
-                        Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/meals/$newName");
+                        Image::make($one)->resize(800, null, function ($constraint) {$constraint->aspectRatio();})->save("uploads/images/news/$newName");
                     }
                     $image=new ArticleImage();
-                    $image->article_id = $item->id;
+                    $image->article_id=$item->id;
                     $image->image = $newName;
-                    $image->save();
+                    $image->url='news/'.$newName;
+                    $item->images()->save($image);
                 }
             }
         }

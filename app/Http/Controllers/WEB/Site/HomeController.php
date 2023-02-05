@@ -12,7 +12,7 @@ use App\Models\Infographic;
 use App\Models\LandingPage;
 use App\Models\Language;
 use App\Models\ArticleCategory;
-
+use App\Models\Sport;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\Setting;
@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function index()
     {
        $categories=Category::get();
-       
+       //$poosts=Article::where('category_id',$categories->id)->take(5)->get();
        $newws =Article::where('views','>=','5')->take(4)->get();
         $new_big=Article::orderBy('id', 'desc')->take(3)->first();
         $infographics=Infographic::orderBy('id', 'desc')->take(3)->get();
@@ -50,20 +50,21 @@ class HomeController extends Controller
         $sport=Article::where('sport_id','1')->orWhere('sport_id','2')
         ->orWhere('sport_id','3')->orWhere('sport_id','4')->orWhere('sport_id','5')->first();
        
-        $new2=Article::where('category_id',$category2->id)->orderBy('id' , 'desc')->take(1)->first();
+        $new2=Article::where('category_id',$category2->id)->where('is_post','yes')->orderBy('id', 'desc')->skip(1)->take(1)->first();
         $news2=Article::where('category_id',$category2->id)->orderBy('id', 'desc')->take(4)->get();
 
-        $new1=Article::where('category_id',$category1->id)->orderBy('id', 'desc')->take(1)->first();
+        $new1=Article::where('category_id',$category1->id)->where('is_post','yes')->orderBy('id', 'desc')->skip(1)->take(1)->first();
         $news=Article::where('category_id',$category1->id)->orderBy('id', 'desc')->take(4)->get();
 
-        $new3=Article::where('category_id',$category3->id)->orderBy('id', 'desc')->take(1)->first();
+        $new3=Article::where('category_id',$category3->id)->where('is_post','yes')->orderBy('id', 'desc')->skip(1)->take(1)->first();
         $news3=Article::where('category_id',$category3->id)->orderBy('id', 'desc')->take(3)->get();
         $sports=Article::where('sport_id','1')->orWhere('sport_id','2')
         ->orWhere('sport_id','3')->orWhere('sport_id','4')->orWhere('sport_id','5')->orderBy('id', 'desc')->take(3)->get();
-        $post_news=Article::where('category_id','2')->where('is_post','yes')->orderBy('id', 'desc')->take(5)->get();
+        $post_news=Article::where('category_id','2')->orWhere('category_id','1')->orWhere('category_id','3')->where('is_post','yes')->limit(5)->latest()->get();
+        
 
         $opinions=Opinion::orderBy('id','desc')->take(4)->get();
-       
+        
         return view('website.home',[
             'categories'=>$categories,
             'newws'=>$newws,
@@ -85,6 +86,7 @@ class HomeController extends Controller
             'sports'=>$sports,
             'new_big'=>$new_big,
             'post_news'=>$post_news,
+            
             
         ]);
         
@@ -153,4 +155,39 @@ public function opinions(){
         'articles'=>$articles
     ]);
    }
+   
+   public function media(){
+   $videoes=Video::orderBy('id','desc')->take(12)->get();
+    return view ('website.videoes',[
+        'videoes'=>$videoes,
+    ]);
+   }
+   public function sports($id){
+    $sport=Sport::where('id',$id)->first();
+    $articles=Article::where('sport_id',$sport->id)->orderBy('id','desc')->take(12)->get();
+    return view('website.sport',[
+        'sport'=>$sport,
+        'articles'=>$articles,
+    ]);
+   }
+   public function categoryArticle(){
+    //  $category=Category::where('id','2')->orWhere('id','3')->first();
+    $articles=Article::where('category_id',2)->orWhere('category_id',3)->orderBy('id','desc')->take(12)->get();
+    return view ('website.globale',[
+        'articles'=>$articles,
+    ]);
+   }
+   public function search(Request $request){
+    $search = $request->input('search');
+
+    
+    $news = Article::query()
+        ->where('title', 'LIKE', "%{$search}%")
+        ->orWhere('detail', 'LIKE', "%{$search}%")
+        ->orWhere('subtitle', 'LIKE', "%{$search}%")
+        ->get();
+        
+    return view('website.home', compact('news'));
+   }
+
 }

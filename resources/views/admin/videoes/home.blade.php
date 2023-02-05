@@ -31,14 +31,7 @@
 
                 <div>
                     <div class="btn-group mb-2 m-md-3 mt-md-0 ml-2 ">
-                        <button type="button" class="btn btn-secondary" href="#activation" role="button"  data-toggle="modal">
-                            <i class="icon-xl la la-check"></i>
-                            <span>{{__('cp.activation')}}</span>
-                        </button>
-                        <button type="button" class="btn btn-secondary" href="#cancel_activation" role="button"  data-toggle="modal">
-                            <i class="icon-xl la la-ban"></i>
-                            <span>{{__('cp.cancel_activation')}}</span>
-                        </button>
+                        
                         <button type="button" class="btn btn-secondary" href="#deleteAll" role="button" data-toggle="modal">
                             <i class="flaticon-delete"></i>
                             <span>{{__('cp.delete')}}</span>
@@ -66,37 +59,7 @@
                     <div class="contentTabel">
                         <button  type="button" class="btn btn-secondar btn--filter mr-2"><i class="icon-xl la la-sliders-h"></i>{{__('cp.filter')}}</button>
                         <div class="container box-filter-collapse" >
-                            <div class="card" >
-                                <form class="form-horizontal" method="get" action="{{url(getLocal().'/admin/videoes')}}">
-                                    <div class="row">
-                                            <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label">{{__('cp.status')}}</label>
-                                                <select id="multiple2" class="form-control"
-                                                        name="status">
-                                                    <option value="">{{__('cp.all')}}</option>
-                                                    <option value="active" {{request('status') == 'active'?'selected':''}}>
-                                                        {{__('cp.active')}}
-                                                    </option>
-                                                    <option value="not_active" {{request('status') == 'not_active'?'selected':''}}>
-                                                        {{__('cp.not_active')}}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <button type="submit" class="btn sbold btn-default btnSearch">{{__('cp.search')}}
-                                                <i class="fa fa-search"></i>
-                                            </button>
-
-                                            <a href="{{url(app()->getLocale().'/admin/videoes')}}" type="submit" class="btn sbold btn-default btnRest">{{__('cp.reset')}}
-                                                <i class="fa fa-refresh"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
                         </div>
                         <div class="card-header d-flex flex-column flex-sm-row align-items-sm-start justify-content-sm-between">
                             <div>

@@ -83,10 +83,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{__('cp.detail_'.$locale->lang)}}</label>
-                                                <textarea class="form-control form-control-solid"
-                                                       name="detail_{{$locale->lang}}"
-                                                       {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} value="{{old('detail_'.$locale->lang,@$item->translate($locale->lang)->detail)}}"
-                                                       required></textarea>
+                                                <textarea class="form-control kt-tinymce-4"                                                              {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} name="detail_{{$locale->lang}}"
+                                                    id="one" rows="8" required>{!! @$item->translate($locale->lang)->detail!!}</textarea>
                                             </div>
                                         </div>
                                     @endforeach
@@ -144,7 +142,8 @@
             $('#submitForm').click();
         });
     </script>
-
+<script src="{{asset('/admin_assets/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
+<script src="{{asset('/admin_assets/js/pages/crud/forms/editors/tinymce.js')}}"></script>
 
 @endsection
 

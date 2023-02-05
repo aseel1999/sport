@@ -19,7 +19,7 @@
                                 @foreach($post_news as $post)
                                 <div class="item">
                                     <div class="big-news">
-                                        <figure><img src="{{ asset($post->image)}}" altt="sth error" /></figure>
+                                        <figure><img src="{{ asset(@$post->image)}}" altt="sth error" /></figure>
                                         <div class="txt-big-news">
                                             <h4><a href="{{url(getLocal().'/news/'.@$post->id.'/details')}}"> {{ $post->title }}</a></h4>
                                         </div>
@@ -38,9 +38,9 @@
                                 
                                 <div class="col-lg-6">
                                     <div class="big-news">
-                                        <figure><img src="{{ asset($new1->image) }}" alt="77" /></figure>
+                                        <figure><img src="{{ asset(@$new1->image) }}" alt="77" /></figure>
                                         <div class="txt-big-news">
-                                            <h4><a href="{{url(getLocal().'/news/'.@$new1->id.'/details')}}">  {{ $new1->title }}</a></h4>
+                                            <h4><a href="{{url(getLocal().'/news/'.@$new1->id.'/details')}}">  {{ @$new1->title }}</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <div class="cont-ds-news">
                                         @foreach($news as $one)
                                         <div class="item-ds-news">
-                                            <figure><img src="{{ $one->image }}" alt="" /></figure>
+                                            <figure><img src="{{ @$one->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
                                                 <h6><a href="{{url(getLocal().'/news/'.@$one->id.'/details')}}"> {{ $one->title }}</a></h6>
                                                 <span><i class="fa-solid fa-calendar-days"></i> {{ $one->created_at->translatedFormat('l j F Y') }}</span>
@@ -69,10 +69,10 @@
                             <div class="other-news">
                                 <div class="big--other--news">
                                     <div class="item-ds-news">
-                                        <figure><img src="{{ asset($new2->image) }}" alt="" /></figure>
+                                        <figure><img src="{{ asset(@$new2->image) }}" alt="" /></figure>
                                         <div class="txt-ds-news">
-                                            <h6><a href="{{url(getLocal().'/news/'.@$new2->id.'/details')}}" >{{ $new2->title }}</a></h6>
-                                            <span>{{ $new2->created_at->translatedFormat('l j F Y') }} </span>
+                                            <h6><a href="{{url(getLocal().'/news/'.@$new2->id.'/details')}}" >{{ @$new2->title }}</a></h6>
+                                            <span>{{ @$new2->created_at->translatedFormat('l j F Y') }} </span>
                                            
                                         </div>
                                     </div>
@@ -81,11 +81,11 @@
                                     @foreach($news2 as $n2)
                                     <div class="col-lg-6">
                                         <div class="item-ds-news">
-                                            <figure><img src="{{ $n2->image }}" alt="" /></figure>
+                                            <figure><img src="{{ @$n2->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
                                                 <h6><a href="{{url(getLocal().'/news/'.@$n2->id.'/details')}}"></a>{{ $n2->title }}</h6>
-                                                <span><i class="fa-solid fa-calendar-days"></i>{{ $n2->created_at->translatedFormat('l j F Y') }} </span>
-                                                <p>{{ $n2->detail }}</p>
+                                                <span><i class="fa-solid fa-calendar-days"></i>{{ @$n2->created_at->translatedFormat('l j F Y') }} </span>
+                                                <p>{{ @$n2->detail }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@
                                             <figure><img src="{{ @$new3->image }}" alt="" /></figure>
                                             <div class="txt--art">
                                                 <h4><a href="{{url(getLocal().'/news/'.@$new3->id.'/details')}}">  {{ @$new3->title }}</a></h4>
-                                                <span> {{ $new3->created_at->translatedFormat('l j F Y') }}  </span>
+                                                <span> {{ @$new3->created_at->translatedFormat('l j F Y') }}  </span>
                                                <p></p>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@
                         <div class="cont-video-aside">
                             <div class="top-video">
                                 <div class="item-video">
-                                    <figure><img src="{{asset($video->image)}}" alt="" /></figure>
+                                    <figure><img src="{{asset(@$video->image)}}" alt="" /></figure>
                                     <div class="txt-video">
                                         <p>{{ $video->name_video }}</p>
                                     </div>
@@ -188,7 +188,7 @@
                             <div class="cont-ds-news">
                               @foreach($last_news as $last_new)
                                 <div class="item-ds-news">
-                                    <figure><img src="{{$last_new->image}}" alt="" /></figure>
+                                    <figure><img src="{{@$last_new->image}}" alt="" /></figure>
                                     <div class="txt-ds-news">
                                         <h6><a href="{{url(getLocal().'/news/'.@$last_new->id.'/details')}}"></a>{{ $last_new->title }}</h6>
                                         <span><i class="fa-solid fa-calendar-days"></i> {{ $last_new->created_at->translatedFormat('l j F Y') }}</span>
@@ -249,7 +249,7 @@
                     
                 </div>
                 <div class="view-more">
-                    <a href="">View All</a>
+                    <a href="{{ url(getLocal().'/infographic') }}">View All</a>
                 </div>
             </div>
         </section>

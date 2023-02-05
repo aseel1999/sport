@@ -23,17 +23,17 @@
                     <div class="menu-ft">
                         <h5> @lang('website.contact_us')</h5>
                         <ul class="list-contact wow fadeInUp">
-                            <li><a href="tel:+965 99887766"> {{ $settings->mobile }}</a></li>
-                            <li><a href="mailto:info@almaseelah.com"> {{ $settings->info_email }}</a></li>
+                            <li><a href="tel:+965 99887766"> {{ $setting->mobile }}</a></li>
+                            <li><a href="mailto:info@almaseelah.com"> {{ $setting->info_email }}</a></li>
                         </ul>
                         <ul class="list-social">
-                            <li><a href=""><i class="fa-brands fa-tiktok"></i></a></li>
-                            <li><a href=""><i class="fa-solid fa-paper-plane"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-whatsapp"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="{{ $setting->tiktok }}"target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+                            <li><a href="{{ $setting->paper }}"target="_blank"><i class="fa-solid fa-paper-plane"></i></a></li>
+                            <li><a href="{{ $setting->whatsapp }}"target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            <li><a href="{{ $setting->facebook }}"target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $setting->twitter }}"target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href="{{ $setting->youtube }}"target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                            <li><a href="{{ $setting->instagram }}"target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

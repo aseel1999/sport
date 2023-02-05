@@ -13,17 +13,10 @@ class Article extends Model
     protected $hidden = ['translations' ,'updated_at'];
     protected $table='articles';
     protected $fillable=['views'];
-    public function getImageAttribute($value)
+    
+    public function getImageAttribute($image)
     {
-        if ($value) {
-            if (filter_var($value, FILTER_VALIDATE_URL) === FALSE) {
-                return url('uploads/images/news/' . $value);
-            } else {
-                return $value;
-            }
-        } else {
-            return url('uploads/images/users/defualtUser.jpg');
-        }
+        return !is_null($image) ? url('uploads/images/news/' . $image) : url('uploads/images/d.jpg');
     }
     
     public function sport(){
@@ -35,7 +28,7 @@ class Article extends Model
     
     public function images()
     {
-        return $this->hasMany(ArticleImage::class, 'article_id');
+        return $this->morphMany(ArticleImage::class, 'object', 'object_type', 'object_id', 'id');
     }
     public function scopeFilter($query)
     {

@@ -43,7 +43,6 @@ Route::group([
     });
 
     Route::get('/', 'WEB\Site\HomeController@index')->name('home');
-    Route::get('/layout', 'WEB\Site\HomeController@layout')->name('layout');
     Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details')->name('details');
     Route::get('/contact-us','WEB\Site\HomeController@contact')->name('contact');
     Route::post('/contact-us-store','WEB\Site\HomeController@contactUs')->name('contactUs');
@@ -54,6 +53,10 @@ Route::group([
     Route::get('/infographic', 'WEB\Site\HomeController@infographic')->name('infographic');
     Route::get('/about', 'WEB\Site\HomeController@about')->name('about');
     Route::get('/inner-page', 'WEB\Site\HomeController@locale')->name('inner_page');
+    Route::get('/global-page', 'WEB\Site\HomeController@categoryArticle')->name('global_page');
+    Route::get('/media', 'WEB\Site\HomeController@media')->name('media');
+    Route::get('/sports/{id}','WEB\Site\HomeController@sports')->name('sports');
+    Route::get('/search','WEB\Site\HomeController@search')->name('search');
 
     //ADMIN AUTH ///
     Route::group(['prefix' => 'admin'], function () {
@@ -97,15 +100,6 @@ Route::group([
         Route::resource('/albums','WEB\Admin\AlbumController');
         Route::resource('/videoes','WEB\Admin\VideoController');
         Route::resource('/opinions','WEB\Admin\OpinionController');
-        Route::resource('/landingPages','WEB\Admin\LandingPageController');
-        Route::get('/land','WEB\Admin\LandingPageController@land');
-
-        
-        
-        
-
-
-        
 
         Route::resource('/news', 'WEB\Admin\ArticleController');
         Route::resource('/sports', 'WEB\Admin\SportController');
@@ -128,8 +122,6 @@ Route::group([
 
 
         Route::resource('/pages', 'WEB\Admin\PagesController');
-        Route::resource('/details','WEB\Admin\DetailController');
-
         Route::resource('/roles', 'WEB\Admin\RolesController');
         Route::get('logs', 'WEB\Admin\LogController@index');
 

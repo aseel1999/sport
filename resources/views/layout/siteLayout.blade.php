@@ -4,6 +4,7 @@
 <body>
 @php
            $newws =App\Models\Article::where('views','>=','5')->take(4)->get();
+           $article1=App\Models\Article::where('is_post','yes')->first();
         $last_news=App\Models\Article::orderBy('id', 'desc')->take(5)->get();
         $video =App\Models\Video::orderBy('id', 'asc')->take(1)->first();
         $videoes=App\Models\Video::orderBy('id', 'desc')->take(2)->get();
@@ -43,7 +44,7 @@
                 </div>
                 
                 <div class="cont-ad">
-                    <a href=""><img src="{{asset('uploads/images/settings/'.$settings->ad)}}" alt="" /></a>
+                    <a href="{{url(getLocal().'/news/'.@$article1->id.'/details')}}"><img src="{{$setting->ad}}" alt="" /></a>
                 </div>
                 <div class="aside-most-read">
                     <div class="sec_head">

@@ -132,7 +132,7 @@
                                             <label>{{__('cp.detail_'.$locale->lang)}}</label>
                                                 <textarea class="form-control kt-tinymce-4"
                                                        {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="detail_{{$locale->lang}}"
-                                                       value="{{old('detail_'.$locale->lang)}}" id="two" rows="8" required></textarea>
+                                                        rows="8" required>{{old('detail_'.$locale->lang)}}</textarea>
                                             
                                         </div>
                                     </div>

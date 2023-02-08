@@ -22,11 +22,11 @@
         <div class="container">
             <div class="logo-site">
                 <a href="{{ url(getLocal().'/') }}">
-                    <img src="{{asset('uploads/images/settings/'.$setting->app_logo)}}"alt="logo" />
+                    <img src="{{ $setting->app_logo}}"alt="logo" />
                 </a>
             </div>
             <div class="banner-header">
-                <a href=""><img src="{{asset('uploads/images/settings/'.$setting->banner_header)}}" alt="" /></a>
+                <a href="{{ url(getLocal().'/') }}"><img src="{{$setting->banner_header}}" alt="" /></a>
             </div>
         </div>
     </div>
@@ -55,9 +55,9 @@
                 
 
             </ul>
-            <form class="form-search">
+            <form role="search" class="form-search" action="{{ url(getLocal().'/search') }}" method="get">
                 <div class="form-group">
-                    <input type="text" name="search"  class="form-control" placeholder="يبحث عن"/>
+                    <input type="text" name="q"  class="form-control" placeholder="يبحث عن"/>
                     <button class="btn-search">
                         <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
                           <path id="Path_1" data-name="Path 1" d="M11.45,0A11.45,11.45,0,1,0,22.9,11.45,11.463,11.463,0,0,0,11.45,0Zm0,20.786a9.336,9.336,0,1,1,9.336-9.336A9.347,9.347,0,0,1,11.45,20.786Z" fill="#afafaf"/>

@@ -44,6 +44,7 @@ Route::group([
 
     Route::get('/', 'WEB\Site\HomeController@index')->name('home');
     Route::get('/news/{id}/details', 'WEB\Admin\ArticleController@details')->name('details');
+    
     Route::get('/contact-us','WEB\Site\HomeController@contact')->name('contact');
     Route::post('/contact-us-store','WEB\Site\HomeController@contactUs')->name('contactUs');
     Route::get('/privacy', 'WEB\Site\HomeController@privacy')->name('privacy');

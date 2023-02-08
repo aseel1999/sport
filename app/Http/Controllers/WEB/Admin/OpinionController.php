@@ -68,7 +68,7 @@ public function index()
     }
     public function store(Request $request){
         $roles = [
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'image|mimes:jpeg,jpg,png,gif',
             
 
         ];
@@ -110,7 +110,7 @@ public function index()
         public function update(Request $request, $id)
     {
         $roles = [
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'image|mimes:jpeg,jpg,png,gif',
         ];
         $locales = Language::all()->pluck('lang');
         foreach ($locales as $locale) {

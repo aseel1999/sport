@@ -13,19 +13,17 @@ class Setting extends Model
 //    protected $appends = ['privacy','terms','aboutus'];
     protected $hidden=['translations','updated_at','deleted_at'];
 
-    public function getCategoriesCoverAttribute($logo)
+    public function getAppLogoAttribute($logo)
+    {
+        return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
+    }
+    public function getBannerHeaderAttribute($logo)
     {
         return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
     }
 
 
-    public function getProjectsCoverAttribute($logo)
-    {
-        return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
-    }
-
-
-    public function getContactCoverAttribute($logo)
+    public function getAdAttribute($logo)
     {
         return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
     }
@@ -36,10 +34,7 @@ class Setting extends Model
         return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
     }
 
-public function getLogoImageAttribute($logo)
-    {
-        return !is_null($logo)?url('uploads/images/settings/'.$logo):null;
-    }
+
 
 
 }

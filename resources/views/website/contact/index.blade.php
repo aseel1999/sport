@@ -52,7 +52,7 @@
                     </div>
                     <aside class="col-lg-4">
                         <div class="cont-ad">
-                            <a href=""><img src="{{asset('uploads/images/settings/'.$setting->ad)}}" alt="" /></a>
+                            <a href=""><img src={{$setting->ad  }} alt="" /></a>
                         </div>
                     </aside>
                 </div>

@@ -26,6 +26,7 @@ return [
     'local news'=>'local news',
     'sport others'=>'sport others',
     'globalandArabic'=>'globalandArabic ',
+    'resultofsearches'=>'resultofsearches',
     
     'videoes'=>'videoes',
     'matches'=>'matches',

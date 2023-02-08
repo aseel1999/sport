@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 فبراير 2023 الساعة 13:57
+-- Generation Time: 08 فبراير 2023 الساعة 20:45
 -- إصدار الخادم: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -76,7 +76,10 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `su
 (29, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-02 20:38:27', '2023-02-02 20:38:27'),
 (30, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-02 20:39:00', '2023-02-02 20:39:00'),
 (31, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-02 20:39:46', '2023-02-02 20:39:46'),
-(32, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-03 16:48:42', '2023-02-03 16:48:42');
+(32, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-03 16:48:42', '2023-02-03 16:48:42'),
+(33, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-06 17:57:06', '2023-02-06 17:57:06'),
+(34, 'default', ' إضافة رأي جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-06 17:58:21', '2023-02-06 17:58:21'),
+(35, 'default', ' إضافة خبر جديد ', NULL, NULL, 'App\\Models\\Admin', 1, '[]', '2023-02-08 17:06:16', '2023-02-08 17:06:16');
 
 -- --------------------------------------------------------
 
@@ -201,17 +204,19 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `image`, `is_post`, `created_at`, `updated_at`, `views`, `sport_id`, `category_id`) VALUES
-(17, '0W3qS2hd1QF14Wn17990251675342677_5862629.png', 'yes', '2023-02-02 10:57:58', '2023-02-05 10:42:00', 6, 1, 1),
-(18, '2yEqU6JRIGOTN2X21691741675344781_2045835.png', 'yes', '2023-02-02 11:33:01', '2023-02-02 20:47:49', 5, 2, 2),
-(19, '0baBdL0L0MeruUI48431361675344821_3795725.png', 'yes', '2023-02-02 11:33:41', '2023-02-02 20:47:52', 6, 3, 3),
-(20, '6H7grtq7JO992Sh74150921675344858_2481946.png', 'yes', '2023-02-02 11:34:18', '2023-02-02 20:47:56', 7, 4, 3),
-(21, 'DP4yGT0pbGncVHi51486531675344896_7675488.png', 'yes', '2023-02-02 11:34:57', '2023-02-02 20:48:00', 8, 5, 1),
+(17, '0W3qS2hd1QF14Wn17990251675342677_5862629.png', 'yes', '2023-02-02 10:57:58', '2023-02-08 17:18:27', 13, 1, 1),
+(18, '2yEqU6JRIGOTN2X21691741675344781_2045835.png', 'yes', '2023-02-02 11:33:01', '2023-02-06 18:33:34', 6, 2, 2),
+(19, '0baBdL0L0MeruUI48431361675344821_3795725.png', 'yes', '2023-02-02 11:33:41', '2023-02-06 18:10:33', 8, 3, 3),
+(20, '6H7grtq7JO992Sh74150921675344858_2481946.png', 'yes', '2023-02-02 11:34:18', '2023-02-06 18:33:55', 10, 4, 3),
+(21, 'DP4yGT0pbGncVHi51486531675344896_7675488.png', 'yes', '2023-02-02 11:34:57', '2023-02-06 18:01:41', 9, 5, 1),
 (22, 'lcQ2w6fuReMeTvN30380621675344931_6993654.png', 'yes', '2023-02-02 11:35:31', '2023-02-02 20:48:04', 4, 1, 1),
 (23, 'B0nujFM94lFNsKs96437961675376249_4301075.png', 'yes', '2023-02-02 20:13:38', '2023-02-02 20:17:29', 0, 4, 2),
 (24, 'hXcHj0CPdp1g2jt81789241675377506_1871811.png', 'no', '2023-02-02 20:38:27', '2023-02-05 09:07:27', 0, 3, 2),
 (25, 'hFS7s7Y8bEnyzhP60551801675377539_8578965.png', 'yes', '2023-02-02 20:38:59', '2023-02-02 20:38:59', 0, 3, 1),
-(26, 'lMpOSD7kNpZuLiS41451021675586844_4878329.jfif', 'no', '2023-02-02 20:39:46', '2023-02-05 09:07:49', 0, 3, 1),
-(27, 'IOoURyP8j8UD0IV89671931675587990_3033989.png', 'no', '2023-02-03 16:48:42', '2023-02-05 10:41:49', 4, 3, 2);
+(26, 'lMpOSD7kNpZuLiS41451021675586844_4878329.jfif', 'no', '2023-02-02 20:39:46', '2023-02-06 18:00:47', 1, 3, 1),
+(27, 'IOoURyP8j8UD0IV89671931675587990_3033989.png', 'yes', '2023-02-03 16:48:42', '2023-02-06 18:06:19', 5, 3, 2),
+(28, 'adPGbvfaPwp1hgl72233531675713468_2185948.png', 'yes', '2023-02-06 17:57:06', '2023-02-06 18:21:23', 4, 3, 2),
+(29, 'pNXLXaCZtddOoqF85786071675883174_3247119.jfif', 'yes', '2023-02-08 17:06:15', '2023-02-08 17:44:46', 1, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -274,7 +279,9 @@ CREATE TABLE `article_images` (
 INSERT INTO `article_images` (`id`, `article_id`, `object_type`, `object_id`, `url`, `image`, `created_at`, `updated_at`) VALUES
 (1, 27, 'App\\Models\\Article', 27, 'news/apnBETNp16755864023869693.jpg', 'apnBETNp16755864023869693.jpg', '2023-02-05 06:40:02', '2023-02-05 08:45:35'),
 (2, 26, 'App\\Models\\Article', 26, 'news/aO9AnPET16755868458435149.jpg', 'aO9AnPET16755868458435149.jpg', '2023-02-05 06:47:25', '2023-02-05 06:47:25'),
-(4, 27, 'App\\Models\\Article', 27, 'news/IG7RbzXn16755879908875556.jpg', 'IG7RbzXn16755879908875556.jpg', '2023-02-05 07:06:31', '2023-02-05 07:06:31');
+(4, 27, 'App\\Models\\Article', 27, 'news/IG7RbzXn16755879908875556.jpg', 'IG7RbzXn16755879908875556.jpg', '2023-02-05 07:06:31', '2023-02-05 07:06:31'),
+(5, 28, 'App\\Models\\Article', 28, 'news/AHOKg5WN16757134684665375.jpg', 'AHOKg5WN16757134684665375.jpg', '2023-02-06 17:57:48', '2023-02-06 17:57:48'),
+(6, 29, 'App\\Models\\Article', 29, 'news/IEuBI4Bj16758831756527514.jpg', 'IEuBI4Bj16758831756527514.jpg', '2023-02-08 17:06:16', '2023-02-08 17:06:16');
 
 -- --------------------------------------------------------
 
@@ -341,7 +348,9 @@ INSERT INTO `article_translations` (`id`, `article_id`, `title`, `detail`, `loca
 (42, 24, 'خلللللل', 'لللللللللللللللللللللللللللللل', 'ar', '2023-02-02 20:38:27', '2023-02-02 20:38:27', 'المنتخب'),
 (43, 25, 'ببببببببببببب', 'رررررررررررررررررررررررر', 'ar', '2023-02-02 20:38:59', '2023-02-02 20:38:59', 'المنتخب'),
 (44, 26, 'خلللللل', '<p>ررررررررررررررررررررررررررررررررررر</p>', 'ar', '2023-02-02 20:39:46', '2023-02-05 06:47:25', 'المنتخب'),
-(45, 27, 'يتبع لتصنيف العالمي', '<p>تتتتتتتتتتتتتتتتتتتتتتتتتتتتتتللللللللللللللللل</p>', 'ar', '2023-02-03 16:48:42', '2023-02-04 19:06:20', 'المنتخب');
+(45, 27, 'يتبع لتصنيف العالمي', '<p>تتتتتتتتتتتتتتتتتتتتتتتتتتتتتتللللللللللللللللل</p>', 'ar', '2023-02-03 16:48:42', '2023-02-04 19:06:20', 'المنتخب'),
+(46, 28, 'هذه الفئة', '<p>لالالالالالالالالالالالالالالالالالالالالالا</p>', 'ar', '2023-02-06 17:57:06', '2023-02-06 17:57:06', 'واحد'),
+(47, 29, 'مواجهة ريال مدريد و الأهلي', '<p>فوز ريال مدريد على الاهلي المصري&nbsp;</p>', 'ar', '2023-02-08 17:06:15', '2023-02-08 17:07:02', 'الفوز للريال');
 
 -- --------------------------------------------------------
 
@@ -620,7 +629,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (69, '2023_01_30_212002_create_contacts_table', 22),
 (70, '2023_01_31_074801_add_locale_to_sport_translations_table', 23),
 (71, '2023_02_05_083259_create_article_images_table', 24),
-(72, '2023_02_05_110716_create_settings_table', 25);
+(72, '2023_02_05_110716_create_settings_table', 25),
+(73, '2023_02_06_153358_add_title_to_settings_table', 26);
 
 -- --------------------------------------------------------
 
@@ -647,7 +657,8 @@ INSERT INTO `opinions` (`id`, `image`, `created_at`, `updated_at`) VALUES
 (5, 'QsVUeclipgj4kDL70568781675326662_1315823.png', '2023-01-28 20:59:26', '2023-02-02 06:31:02'),
 (6, 'VsJVhtZYRBIpFPY77446461675326592_8963021.png', '2023-01-28 21:00:30', '2023-02-02 06:29:53'),
 (7, 'RTIKfISCtiUWaqi22756671674947669_2378467.png', '2023-01-28 21:08:58', '2023-01-28 21:14:29'),
-(8, 'TV96GZlm3MeCvT463682641675376194_6422845.png', '2023-02-02 20:16:01', '2023-02-02 20:16:34');
+(8, 'TV96GZlm3MeCvT463682641675376194_6422845.png', '2023-02-02 20:16:01', '2023-02-02 20:16:34'),
+(9, 'Zfd1EN9vb9ay2nR61262891675713540_1677885.png', '2023-02-06 17:58:21', '2023-02-06 17:59:01');
 
 -- --------------------------------------------------------
 
@@ -685,7 +696,8 @@ INSERT INTO `opinion_translations` (`id`, `opinion_id`, `name_author`, `title`, 
 (12, 6, 'أيهم', 'هذه المقالة', 'وووووووووووووووووووووو', '2023-02-02 06:29:53', '2023-02-02 06:29:53', 'ar'),
 (13, 5, 'mohammad', 'ffffdddd', 'xxxxxxxxxxxxxxxxxxxxxx', '2023-02-02 06:31:02', '2023-02-02 06:31:02', 'en'),
 (14, 5, 'محمد', 'هذه المقالة', 'وووووووووووووووووووووو', '2023-02-02 06:31:02', '2023-02-02 06:31:02', 'ar'),
-(15, 8, 'عبود', 'هذه الفئة', 'سسسسسسسسسسسسسسس', '2023-02-02 20:16:01', '2023-02-02 20:16:34', 'ar');
+(15, 8, 'عبود', 'هذه الفئة', '<p>سسسسسسسسسسسسسسس</p>', '2023-02-02 20:16:01', '2023-02-06 18:58:25', 'ar'),
+(16, 9, 'مؤمن', 'المنتخب السعودي يصدم التانجو الأرجنتيني', '<p>لا لا لا لا لا</p>', '2023-02-06 17:58:21', '2023-02-06 19:06:52', 'ar');
 
 -- --------------------------------------------------------
 
@@ -1031,15 +1043,16 @@ CREATE TABLE `settings` (
   `urls` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `settings`
 --
 
-INSERT INTO `settings` (`id`, `paginateTotal`, `login_image`, `google_play_url`, `app_store_url`, `app_logo`, `info_email`, `mobile`, `facebook`, `twitter`, `instagram`, `tiktok`, `linked`, `youtube`, `play`, `paper`, `about`, `whatsapp`, `ad`, `banner_header`, `is_maintenance_mode`, `is_allow_register`, `is_allow_login`, `urls`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 20, '', 'wwwwwwwwwww', 'wwwwwwwwwwwww', 'logo.svg\r\n', 'hexa@gmail.com', '059789632', 'https://www.facebook.com/', 'https://twitter.com/Risslh', 'https://www.instagram.com/yousef__bakar/', 'https://www.tiktok.com/ar/', 'https://twitter.com/LinkedIn', 'https://youtu.be/T7Rj1ij8JhU', 'https://youtu.be/T7Rj1ij8JhU', 'https://games4esl.com/list-of-sports/', 'سرمد موقع متخصص في عرض الرياضات المختلفة والمبارات حول العالم', 'https://www.whatsapp.com/download?lang=ar', 'ad.png', 'banner-header.png', '1', '1', '1', '', '2023-02-05 11:07:55', NULL, NULL);
+INSERT INTO `settings` (`id`, `paginateTotal`, `login_image`, `google_play_url`, `app_store_url`, `app_logo`, `info_email`, `mobile`, `facebook`, `twitter`, `instagram`, `tiktok`, `linked`, `youtube`, `play`, `paper`, `about`, `whatsapp`, `ad`, `banner_header`, `is_maintenance_mode`, `is_allow_register`, `is_allow_login`, `urls`, `created_at`, `updated_at`, `deleted_at`, `title`) VALUES
+(1, 20, 'aVqXuNh4niPJKFg51512401675713114_2218541.png', 'wwwwwwwwwww', 'wwwwwwwwwwwww', 'logo.svg\r\n', 'hexa@gmail.com', '059413268', 'https://www.facebook.com/', 'https://twitter.com/Risslh', 'https://www.instagram.com/yousef__bakar/', 'https://www.tiktok.com/ar/', 'https://twitter.com/LinkedIn', 'https://youtu.be/T7Rj1ij8JhU', 'https://youtu.be/T7Rj1ij8JhU', 'https://games4esl.com/list-of-sports/', '<p>&nbsp;</p>\r\n<p>سرمد موقع متخصص في عرض الرياضات المختلفة والمبارات حول العالم</p>', 'https://www.whatsapp.com/download?lang=ar', 'ad.png', 'banner-header.png', '0', '0', '0', '', '2023-02-05 11:07:55', '2023-02-08 17:16:44', NULL, 'سرمد');
 
 -- --------------------------------------------------------
 
@@ -1521,7 +1534,7 @@ ALTER TABLE `video_translations`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1551,7 +1564,7 @@ ALTER TABLE `album_translations`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `article_categories`
@@ -1563,13 +1576,13 @@ ALTER TABLE `article_categories`
 -- AUTO_INCREMENT for table `article_images`
 --
 ALTER TABLE `article_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `article_translations`
 --
 ALTER TABLE `article_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1629,19 +1642,19 @@ ALTER TABLE `language_translation`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `opinion_translations`
 --
 ALTER TABLE `opinion_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pages`

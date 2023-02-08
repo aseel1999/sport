@@ -24,6 +24,7 @@ return [
     'Infographic'=>'انفوجرافيك',
     'globalandArabic '=>'عربي و دولي',
     'Arabic news'=>'أخبار عربية',
+    'resultofsearches'=>'نتائج البحث عن ',
     'sport others'=>'رياضات أخرى',
     'local news'=>'أخبار محلية',
     'contact_us'=>'تواصل معنا',

@@ -61,13 +61,15 @@ class HomeController extends Controller
         $sports=Article::where('sport_id','1')->orWhere('sport_id','2')
         ->orWhere('sport_id','3')->orWhere('sport_id','4')->orWhere('sport_id','5')->orderBy('id', 'desc')->take(3)->get();
         $post_news=Article::where('category_id','2')->orWhere('category_id','1')->orWhere('category_id','3')->where('is_post','yes')->limit(5)->latest()->get();
-        
+        $article1=Article::where('is_post','yes')->first();
 
         $opinions=Opinion::orderBy('id','desc')->take(4)->get();
+        
         
         return view('website.home',[
             'categories'=>$categories,
             'newws'=>$newws,
+            'article1'=>$article1,
             'news'=>$news,
             'video'=>$video,
             'last_news'=>$last_news,
@@ -178,16 +180,20 @@ public function opinions(){
     ]);
    }
    public function search(Request $request){
-    $search = $request->input('search');
-
     
-    $news = Article::query()
-        ->where('title', 'LIKE', "%{$search}%")
-        ->orWhere('detail', 'LIKE', "%{$search}%")
-        ->orWhere('subtitle', 'LIKE', "%{$search}%")
-        ->get();
-        
-    return view('website.home', compact('news'));
+    $keyword = $request->query('q');
+    
+    $news = Article::whereTranslationLike('title',  '%'.$keyword.'%')
+        ->orWhereTranslationLike('detail', '%'.$keyword.'%' )
+        ->orWhereTranslationLike('subtitle', '%'.$keyword.'%')
+        ->orderBy('id', 'desc')
+        ->paginate($this->settings->paginateTotal);
+          
+     
+    return view('website.search',[
+        'keyword'=>$keyword,
+        'news'=>$news,
+    ] );
    }
 
 }

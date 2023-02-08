@@ -80,13 +80,13 @@
 
                                 <div class="row">
                                     @foreach($locales as $locale)
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{__('cp.detail_'.$locale->lang)}}</label>
-                                                <textarea class="form-control kt-tinymce-4"                                                              {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} name="detail_{{$locale->lang}}"
-                                                    id="one" rows="8" required>{!! @$item->translate($locale->lang)->detail!!}</textarea>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{__('cp.detail_'.$locale->lang)}}</label>
+                                            <textarea class="form-control kt-tinymce-4"                                                              {{($locale->lang == 'ar') ? 'dir=rtl' :'' }} name="detail_{{$locale->lang}}"
+                                                      rows="4" required>{!! @$item->translate($locale->lang)->detail!!}</textarea>
                                         </div>
+                                    </div>
                                     @endforeach
                                 </div>
                                 <div class="card-body col-md-12">

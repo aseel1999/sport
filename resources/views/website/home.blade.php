@@ -83,7 +83,7 @@
                                         <div class="item-ds-news">
                                             <figure><img src="{{ @$n2->image }}" alt="" /></figure>
                                             <div class="txt-ds-news">
-                                                <h6><a href="{{url(getLocal().'/news/'.@$n2->id.'/details')}}"></a>{{ $n2->title }}</h6>
+                                                <h6><a href="{{url(getLocal().'/news/'.@$n2->id.'/details')}}">{{ @$n2->title }}</a></h6>
                                                 <span><i class="fa-solid fa-calendar-days"></i>{{ @$n2->created_at->translatedFormat('l j F Y') }} </span>
                                                 <p>{{ @$n2->detail }}</p>
                                             </div>
@@ -113,7 +113,7 @@
                                             <div class="item-ds-news">
                                                 <figure><img src="{{ @$n3->image }}" alt="" /></figure>
                                                 <div class="txt-ds-news">
-                                                    <h6><a href="{{url(getLocal().'/news/'.@$n3->id.'/details')}}"></a>{{ @$n3->title }}</h6>
+                                                    <h6><a href="{{url(getLocal().'/news/'.@$n3->id.'/details')}}">{{ @$n3->title }}</a></h6>
                                                     <span><i class="fa-solid fa-calendar-days"></i> {{ $n3->created_at->translatedFormat('l j F Y') }}</span>
                                                     <p>{{@$n3->detail }}</p>
                                                 </div>
@@ -140,7 +140,7 @@
                                             <div class="item-ds-news">
                                                 <figure><img src="{{ @$spo->image }}" alt="" /></figure>
                                                 <div class="txt-ds-news">
-                                                    <h6><a href="{{url(getLocal().'/news/'.@$spo->id.'/details')}}"></a>{{ @$spo->title }}</h6>
+                                                    <h6><a href="{{url(getLocal().'/news/'.@$spo->id.'/details')}}">{{ @$spo->title }}</a></h6>
                                                     <span><i class="fa-solid fa-calendar-days"></i> {{ $spo->created_at->translatedFormat('l j F Y') }}</span>
                                                     <p>{{ @$spo->detail }}</p>
                                                 </div>
@@ -179,7 +179,7 @@
                         </div>
                         
                         <div class="cont-ad">
-                            <a href=""><img src="{{asset('uploads/images/settings/'.$settings->ad)}}" alt="" /></a>
+                            <a href="{{url(getLocal().'/news/'.@$article1->id.'/details')}}"><img src="{{$setting->ad}}" alt="" /></a>
                         </div>
                         <div class="latest-news">
                             <div class="sec_head">
@@ -222,7 +222,7 @@
                                 <div class="item-ds-news">
                                     <figure><img src="{{asset(@$opinion->image)}}" alt="" /></figure>
                                     <div class="txt-ds-news">
-                                        <h6><a href="{{url(getLocal().'/news/'.@$opinion->id.'/details')}}">{{ @$opinion->title}}</a></h6>
+                                        <h6><a href="{{url(getLocal().'/opinion-details/'.@$opinion->id)}}">{{ @$opinion->title}}</a></h6>
                                         <small> {{ @$opinion->name_author }} </small>
                                         <span><i class="fa-solid fa-calendar-days"></i> {{ $opinion->created_at->translatedFormat('l j F Y') }}</span>
                                     </div>

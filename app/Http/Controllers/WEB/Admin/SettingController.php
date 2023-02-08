@@ -71,13 +71,24 @@ class SettingController extends Controller
 
         $roles = [
             'login_image' => 'image|mimes:jpeg,jpg,png,svg',
+            'app_logo'=>'image|mimes:jpeg,jpg,png,svg',
+            'ad'=>'image|mimes:jpeg,jpg,png,svg',
+            'banner_header'=>'image|mimes:jpeg,jpg,png,svg',
+            'youtube'=>'required|url',
+            'facebook'=>'required|url',
+            'whatsapp'=>'required',
+            'title'=>'required',
             'info_email' => 'required|email',
             'mobile' => 'required|numeric',
             'twitter' => 'required|url',
             'paginateTotal' => 'required|numeric',
             'instagram' => 'required|url',
-            'google_play_url' => 'required|url',
-            'app_store_url' => 'required|url',
+            'linked'=>'required|url',
+            'paper'=>'required|url',
+            'play'=>'required|url',
+            'about'=>'required',
+            'tiktok'=>'required|url',
+
         ];
 
         $this->validate($request, $roles);
@@ -88,13 +99,27 @@ class SettingController extends Controller
         $setting->paginateTotal = trim($request->get('paginateTotal'));
         $setting->instagram = trim($request->get('instagram'));
         $setting->twitter = trim($request->get('twitter'));
-        $setting->google_play_url = trim($request->get('google_play_url'));
-        $setting->app_store_url = trim($request->get('app_store_url'));
-
+        $setting->facebook=trim($request->get('facebook'));
+        $setting->youtube=trim($request->get('youtube'));
+        $setting->title=trim($request->get('title'));
+        $setting->whatsapp=trim($request->get('whatsapp'));
+        $setting->linked=trim($request->get('linked'));
+        $setting->paper=trim($request->get('paper'));
+        $setting->play=trim($request->get('play'));
+        $setting->tiktok=trim($request->get('tiktok'));
+        $setting->about=$request->get('about');
         if ($request->hasFile('login_image')) {
             $setting->login_image =  $this->storeImage( $request->file('login_image'), 'settings',$setting->getRawOriginal('login_image'),null,512);
         }
-
+        if ($request->hasFile('app_logo')) {
+            $setting->app_log =  $this->storeImage( $request->file('app_log'), 'settings',$setting->getRawOriginal('app_log'),null,512);
+        }
+        if ($request->hasFile('ad')) {
+            $setting->ad =  $this->storeImage( $request->file('ad'), 'settings',$setting->getRawOriginal('ad'),null,512);
+        }
+        if ($request->hasFile('banner_header')) {
+            $setting->banner_header =  $this->storeImage( $request->file('banner_header'), 'settings',$setting->getRawOriginal('banner_header'),null,512);
+        }
 
         $setting->save();
 

@@ -76,15 +76,15 @@
 
                             <div class="row">
                                 @foreach($locales as $locale)
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>{{__('cp.detail_'.$locale->lang)}}</label>
-                                                <textarea class="form-control kt-tinymce-4"
-                                                       {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="detail_{{$locale->lang}}"
-                                                       value="{{old('detail_'.$locale->lang)}}" id="one" rows="6" required></textarea>
-                                            
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{__('cp.detail_'.$locale->lang)}}</label>
+                                            <textarea class="form-control kt-tinymce-4"
+                                                   {{($locale->lang == 'ar') ? 'dir=rtl' :'' }}  name="detail_{{$locale->lang}}"
+                                                    rows="8" required>{{old('detail_'.$locale->lang)}}</textarea>
+                                        
                                     </div>
+                                </div>
                                 @endforeach
 
                                 

@@ -28,7 +28,7 @@
 		<link href="{{asset('/admin_assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('/admin_assets/css/style.css')}}" rel="stylesheet" type="text/css" />
 		 @yield('css')
-		 <link rel="shortcut icon" href="{{url('favicon.png')}}" />
+		 <link rel="shortcut icon" href="{{url('web/image/logo.svg')}}" />
 		 <style>
 			.box-filter-collapse {
 			 display: none;
@@ -90,7 +90,7 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="{{url(getLocal().'/admin')}}">
-				<img alt="Logo" src="{{url('website/images/favicon.svg')}}" />
+				<img alt="Logo" src="{{url('web/image/logo.svg')}}" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -136,7 +136,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="{{ url(app()->getLocale().'/admin/home') }}" class="brand-logo">
-							<img alt="Logo" src="{{url('logo.png')}}" style="max-width: 60px;" />
+							<img alt="Logo" src="{{url('web/image/logo.svg')}}" style="max-width: 60px;" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

@@ -93,7 +93,7 @@ class ArticleController extends Controller
             
             
             'is_post'=>'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'image|mimes:jpeg,jpg,png,gif',
             'category_id'=>'required',
             'sport_id'=>'required',
 
@@ -173,7 +173,7 @@ class ArticleController extends Controller
             
             
             'is_post'=>'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'image|mimes:jpeg,jpg,png,gif',
             'category_id'=>'required',
             'sport_id'=>'required',
         ];

@@ -12,7 +12,7 @@
                                     <div class="txt-ds-news">
                                         <h6><a href="{{url(getLocal().'/news/'.@$article->id.'/details')}}">{{ $article->title }}</a></h6>
                                         <span> {{ $article->created_at->translatedFormat('l j F Y') }}</span>
-                                        <p>  {{ $article->detail }}.</p>
+                                        <p>  {!!$article->detail !!}.</p>
                                     </div>
                                 </div>
                                 @endforeach

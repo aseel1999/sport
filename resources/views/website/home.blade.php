@@ -52,7 +52,7 @@
                                             <div class="txt-ds-news">
                                                 <h6><a href="{{url(getLocal().'/news/'.@$one->id.'/details')}}"> {{ $one->title }}</a></h6>
                                                 <span><i class="fa-solid fa-calendar-days"></i> {{ $one->created_at->translatedFormat('l j F Y') }}</span>
-                                                <p>{{ @$one->detail }}.</p>
+                                                <p>{!! @$one->detail !!}.</p>
                                             </div>
                                         </div>
                                         @endforeach
@@ -85,7 +85,7 @@
                                             <div class="txt-ds-news">
                                                 <h6><a href="{{url(getLocal().'/news/'.@$n2->id.'/details')}}">{{ @$n2->title }}</a></h6>
                                                 <span><i class="fa-solid fa-calendar-days"></i>{{ @$n2->created_at->translatedFormat('l j F Y') }} </span>
-                                                <p>{{ @$n2->detail }}</p>
+                                                <p>{!! @$n2->detail !!}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                                 <div class="txt-ds-news">
                                                     <h6><a href="{{url(getLocal().'/news/'.@$n3->id.'/details')}}">{{ @$n3->title }}</a></h6>
                                                     <span><i class="fa-solid fa-calendar-days"></i> {{ $n3->created_at->translatedFormat('l j F Y') }}</span>
-                                                    <p>{{@$n3->detail }}</p>
+                                                    <p>{!!@$n3->detail !!}</p>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -142,7 +142,7 @@
                                                 <div class="txt-ds-news">
                                                     <h6><a href="{{url(getLocal().'/news/'.@$spo->id.'/details')}}">{{ @$spo->title }}</a></h6>
                                                     <span><i class="fa-solid fa-calendar-days"></i> {{ $spo->created_at->translatedFormat('l j F Y') }}</span>
-                                                    <p>{{ @$spo->detail }}</p>
+                                                    <p>{!! @$spo->detail !!}</p>
                                                 </div>
                                             </div>
                                             @endforeach

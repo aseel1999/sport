@@ -258,7 +258,7 @@ class ArticleController extends Controller
 
        ]);
        
-       return view ('admin.news.details
+       return view ('website.details
        ',[
         'new'=>$new,
         'articles'=>$articles,

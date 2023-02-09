@@ -14,7 +14,7 @@
                     <div class="cont-details">
                         <figure><img src="{{ $new->image }}" alt="" /></figure>
                                 <div class="txt-details">
-                                    <p>{{ $new->detail }}.</p> 
+                                    <p>{!!$new->detail !!}.</p> 
                                 </div>
                                 <div class="cont-share">
                                     <p>@lang('website.share article')</p>

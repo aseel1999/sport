@@ -19,7 +19,7 @@
                             </div>
                             <div class="cont-details">
                                 <div class="txt-details">
-                                    <p>{{ $opinion->detail }}</p>
+                                    <p>{!!$opinion->detail !!}</p>
 	      
                                 </div>
                                 <div class="cont-share">
